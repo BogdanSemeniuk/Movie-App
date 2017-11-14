@@ -13,6 +13,8 @@
 		F59A8B0F1FB9FB5D002A689E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B0D1FB9FB5D002A689E /* Main.storyboard */; };
 		F59A8B111FB9FB5D002A689E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B101FB9FB5D002A689E /* Assets.xcassets */; };
 		F59A8B141FB9FB5D002A689E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */; };
+		F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */; };
+		F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01A4F1FBB544400A4413F /* LoginAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		F59A8B101FB9FB5D002A689E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F59A8B131FB9FB5D002A689E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F59A8B151FB9FB5D002A689E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		F5E01A4F1FBB544400A4413F /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 			children = (
 				F59A8B091FB9FB5D002A689E /* AppDelegate.swift */,
 				F59A8B0B1FB9FB5D002A689E /* ViewController.swift */,
+				F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */,
+				F5E01A4F1FBB544400A4413F /* LoginAPI.swift */,
 				F59A8B0D1FB9FB5D002A689E /* Main.storyboard */,
 				F59A8B101FB9FB5D002A689E /* Assets.xcassets */,
 				F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */,
@@ -225,6 +231,8 @@
 			files = (
 				F59A8B0C1FB9FB5D002A689E /* ViewController.swift in Sources */,
 				F59A8B0A1FB9FB5D002A689E /* AppDelegate.swift in Sources */,
+				F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */,
+				F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
