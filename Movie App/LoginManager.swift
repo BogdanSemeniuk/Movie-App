@@ -24,7 +24,7 @@ class LoginManager: NSObject {
                 guard let unwrappedToken = unwrappedJson["request_token"] as? String else { return }
                 token = unwrappedToken
                 
-                guard let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)?redirect_to=movieapp/approved") else { return }
+                guard let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)?redirect_to=movieapp://approved") else { return }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 
             case let .failure(error):
