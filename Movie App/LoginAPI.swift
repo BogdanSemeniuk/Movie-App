@@ -13,6 +13,7 @@ let apiKey = "85cfecbf4366c6b833864140f4bc428c"
 
 enum LoginAPI {
     case getToken
+    case getSessionId(token: String)
 }
 
 extension LoginAPI: TargetType {
@@ -21,7 +22,12 @@ extension LoginAPI: TargetType {
     }
 
     var path: String {
-        return "authentication/token/new"
+        switch self {
+        case .getToken:
+            return "authentication/token/new"
+        case .getSessionId(token: _):
+            return "authentication/session/new"
+        }
     }
 
     var method: Moya.Method {
@@ -33,7 +39,12 @@ extension LoginAPI: TargetType {
     }
 
     var task: Task {
-        return .requestParameters(parameters: ["api_key":apiKey], encoding: URLEncoding.queryString)
+        switch self {
+        case .getToken:
+            return .requestParameters(parameters: ["api_key":apiKey], encoding: URLEncoding.queryString)
+        case .getSessionId(token: let token):
+            return .requestParameters(parameters: ["api_key":apiKey, "request_token":token], encoding: URLEncoding.queryString)
+        }
     }
 
     var headers: [String : String]? {
