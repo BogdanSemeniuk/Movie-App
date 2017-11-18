@@ -18,18 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        guard let session = Keychain.sharedStorage.get("session") as? String else {
-            loginManager.getToken()
-            print("getToken")
-            return true
-        }
-        print("SessionID : \(session)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let identifier = Keychain.sharedStorage.get("session") == nil ? "Login" : "Home"
+        let initialVC = storyboard.instantiateViewController(withIdentifier: identifier)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialVC
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         loginManager.getSessionId()
-        
         return true
     }
 }
