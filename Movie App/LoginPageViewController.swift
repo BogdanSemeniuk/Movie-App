@@ -9,10 +9,20 @@
 import UIKit
 
 class LoginPageViewController: UIViewController {
+    
+    private let loginManager = LoginManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-
+    
+    @IBAction func actionLoginButton(_ sender: UIButton) {
+        loginManager.getToken()
+    }
+    
+    @IBAction func actionGuestButton(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NavigationHome")
+        self.present(vc!, animated: true, completion: nil)
+    }
+    
 }
