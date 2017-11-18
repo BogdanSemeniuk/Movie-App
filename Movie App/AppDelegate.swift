@@ -18,15 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        loginManager.getToken()
+        guard let session = Keychain.sharedStorage.get("session") as? String else {
+            loginManager.getToken()
+            return true
+        }
         
         return true
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-    
         loginManager.getSessionId()
-        print(Keychain.sharedStorage.get("session") as? String)
+        
         return true
     }
 }
