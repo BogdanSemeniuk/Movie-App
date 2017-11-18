@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard let session = Keychain.sharedStorage.get("session") as? String else {
             loginManager.getToken()
+            print("getToken")
             return true
         }
-        
+        print("SessionID : \(session)")
         return true
     }
 
