@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
     
         loginManager.getSessionId()
-        print(loginManager.keychain.get("session"))
+        print(Keychain.sharedStorage.get("session") as? String)
         return true
     }
 }

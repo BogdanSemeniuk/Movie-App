@@ -11,8 +11,7 @@ import Moya
 import KeychainSwift
 
 class LoginManager: NSObject {
-    
-    let keychain = KeychainSwift()
+
     private let provider = MoyaProvider<LoginAPI>()
     private var token = ""
     
@@ -44,7 +43,7 @@ class LoginManager: NSObject {
                 guard let unwrappedJson = responseJSON as? Dictionary<String, Any> else { return }
                 guard let unwrappedSessionId = unwrappedJson["session_id"] as? String else { return }
                 let sessionId = unwrappedSessionId
-                self.keychain.set(sessionId, forKey: "session")
+                Keychain.sharedStorage.set(sessionId, forKey: "session")
             case let .failure(error):
                 print(error.errorDescription ?? "Unknown error")
             }
