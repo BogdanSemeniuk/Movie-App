@@ -16,10 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let loginManager = LoginManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let identifier = Keychain.sharedStorage.get("session") == nil ? "Login" : "Home"
-        let initialVC = storyboard.instantiateViewController(withIdentifier: identifier)
+        Keychain.sharedStorage.clear()
+        let storyboardName = loginManager.isLogined ? "Movies" : "Login"
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let identifierVC = loginManager.isLogined ? "Movies" : "Login"
+        let initialVC = storyboard.instantiateViewController(withIdentifier: identifierVC)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialVC
         self.window?.makeKeyAndVisible()
@@ -28,11 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        loginManager.getSessionId()
-        
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationHome")
-        window?.rootViewController?.present(vc, animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Token received"), object: nil)
         
         return true
     }

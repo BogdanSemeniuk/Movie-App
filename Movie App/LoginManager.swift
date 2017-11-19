@@ -6,17 +6,20 @@
 //  Copyright © 2017 Bogdan Semeniuk. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Moya
 import KeychainSwift
 
-class LoginManager: NSObject {
+class LoginManager {
 
-    private let provider = MoyaProvider<LoginAPI>()
+    private lazy var provider = MoyaProvider<LoginAPI>()
     private var token = ""
     
+    var isLogined: Bool {
+        return Keychain.sharedStorage.get("session") != nil
+    }
     
-    func getToken() {
+    func getTokenAndRedirectToApp() {
         provider.request(.getToken) { (result) in
             switch result {
             case let .success(moyaResponse):
@@ -34,7 +37,7 @@ class LoginManager: NSObject {
         }
     }
 
-    func getSessionId() -> () {
+    func getSessionId(complition: @escaping () -> ()) {
         provider.request(.getSessionId(token: token)) { (result) in
             switch result {
             case let .success(moyaResponse):
@@ -44,6 +47,7 @@ class LoginManager: NSObject {
                 guard let unwrappedSessionId = unwrappedJson["session_id"] as? String else { return }
                 let sessionId = unwrappedSessionId
                 Keychain.sharedStorage.set(sessionId, forKey: "session")
+                complition()
             case let .failure(error):
                 print(error.errorDescription ?? "Unknown error")
             }

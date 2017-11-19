@@ -10,5 +10,5 @@ import Foundation
 import KeychainSwift
 
 class Keychain: KeychainSwift {
-    static let sharedStorage = KeychainSwift()
+    static let sharedStorage = Keychain()
 }
