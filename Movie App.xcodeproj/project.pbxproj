@@ -13,6 +13,7 @@
 		F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C2701FC0A84300B85511 /* LoginPageViewController.swift */; };
 		F506C2731FC0B99A00B85511 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C2721FC0B99A00B85511 /* RoundButton.swift */; };
 		F512F0571FC4859B00AED8A7 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512F0561FC4859B00AED8A7 /* MovieAPI.swift */; };
+		F512F0591FC4940A00AED8A7 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512F0581FC4940A00AED8A7 /* MovieManager.swift */; };
 		F59A8B0A1FB9FB5D002A689E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A8B091FB9FB5D002A689E /* AppDelegate.swift */; };
 		F59A8B0F1FB9FB5D002A689E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B0D1FB9FB5D002A689E /* Login.storyboard */; };
 		F59A8B111FB9FB5D002A689E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B101FB9FB5D002A689E /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		F506C2701FC0A84300B85511 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 		F506C2721FC0B99A00B85511 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F512F0561FC4859B00AED8A7 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
+		F512F0581FC4940A00AED8A7 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		F59A8B061FB9FB5D002A689E /* Movie App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59A8B091FB9FB5D002A689E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59A8B0E1FB9FB5D002A689E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				F59A8B091FB9FB5D002A689E /* AppDelegate.swift */,
 				F506C26C1FC0912100B85511 /* Keychain.swift */,
 				F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */,
+				F512F0581FC4940A00AED8A7 /* MovieManager.swift */,
 				F5E01A4F1FBB544400A4413F /* LoginAPI.swift */,
 				F512F0561FC4859B00AED8A7 /* MovieAPI.swift */,
 				F506C2701FC0A84300B85511 /* LoginPageViewController.swift */,
@@ -250,6 +253,7 @@
 			files = (
 				F59A8B0A1FB9FB5D002A689E /* AppDelegate.swift in Sources */,
 				F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */,
+				F512F0591FC4940A00AED8A7 /* MovieManager.swift in Sources */,
 				F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */,
 				F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */,
 				F5F4E07B1FC1C32F00670F41 /* InternetConnection.swift in Sources */,
