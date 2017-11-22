@@ -39,17 +39,19 @@ class LoginPageViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NavigationHome")
-        self.present(vc!, animated: true, completion: nil)
+        goToMoviesVC()
     }
     
     // MARK: - Methods
     
     @objc func getSessionIdAndGoToMovies()  {
         loginManager.getSessionId(complition: {
-            let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "NavigationMovies")
-            (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = vc
+            self.goToMoviesVC()
         })
     }
     
+    private func goToMoviesVC() {
+        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "NavigationMovies")
+        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = vc
+    }
 }

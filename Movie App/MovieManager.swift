@@ -17,8 +17,17 @@ class MovieManager {
             switch result {
             case let .success(moyaResponse):
                 let responseData = moyaResponse.data
-                let responseJSON = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments)
-                guard let unwrappedJson = responseJSON as? Dictionary<String, Any> else { return }
+                do {
+                    let moviesPackage = try JSONDecoder().decode(PackageOfMovies.self, from: responseData)
+                    print(moviesPackage.results![0])
+                } catch let error {
+                    print(error)
+                }
+                
+                
+//                let responseJSON = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments)
+//                guard let unwrappedJson = responseJSON as? Dictionary<String, Any> else { return }
+//                print(unwrappedJson)
             case let .failure(error):
                 print(error.errorDescription ?? "Unknown error")
             }
