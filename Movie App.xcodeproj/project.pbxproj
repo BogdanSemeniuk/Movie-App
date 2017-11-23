@@ -19,6 +19,7 @@
 		F59A8B0F1FB9FB5D002A689E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B0D1FB9FB5D002A689E /* Login.storyboard */; };
 		F59A8B111FB9FB5D002A689E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B101FB9FB5D002A689E /* Assets.xcassets */; };
 		F59A8B141FB9FB5D002A689E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */; };
+		F5C451061FC7545D0087F13E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C451051FC7545D0087F13E /* MovieCell.swift */; };
 		F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */; };
 		F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01A4F1FBB544400A4413F /* LoginAPI.swift */; };
 		F5F4E07B1FC1C32F00670F41 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F4E07A1FC1C32F00670F41 /* InternetConnection.swift */; };
@@ -42,6 +43,7 @@
 		F59A8B101FB9FB5D002A689E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F59A8B131FB9FB5D002A689E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F59A8B151FB9FB5D002A689E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5C451051FC7545D0087F13E /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		F5E01A4F1FBB544400A4413F /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		F5F4E07A1FC1C32F00670F41 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
@@ -77,6 +79,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F50E74701FC601A70041D0D5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F5E01A4F1FBB544400A4413F /* LoginAPI.swift */,
+				F512F0561FC4859B00AED8A7 /* MovieAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F50E74711FC601D80041D0D5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */,
+				F512F0581FC4940A00AED8A7 /* MovieManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F50E74721FC601FB0041D0D5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F506C2701FC0A84300B85511 /* LoginPageViewController.swift */,
+				F506C26E1FC096F800B85511 /* MoviesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F50E74731FC6028F0041D0D5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F59A8B0D1FB9FB5D002A689E /* Login.storyboard */,
+				F5F4E07C1FC20C7900670F41 /* Movies.storyboard */,
+				F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		F59A8AFD1FB9FB5C002A689E = {
 			isa = PBXGroup;
 			children = (
@@ -99,20 +138,16 @@
 			isa = PBXGroup;
 			children = (
 				F59A8B091FB9FB5D002A689E /* AppDelegate.swift */,
+				F50E74711FC601D80041D0D5 /* Managers */,
+				F50E74701FC601A70041D0D5 /* API */,
+				F50E74721FC601FB0041D0D5 /* ViewControllers */,
 				F506C26C1FC0912100B85511 /* Keychain.swift */,
-				F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */,
-				F512F0581FC4940A00AED8A7 /* MovieManager.swift */,
-				F50E746E1FC5E98E0041D0D5 /* PackageOfMovies.swift */,
-				F5E01A4F1FBB544400A4413F /* LoginAPI.swift */,
-				F512F0561FC4859B00AED8A7 /* MovieAPI.swift */,
-				F506C2701FC0A84300B85511 /* LoginPageViewController.swift */,
-				F506C26E1FC096F800B85511 /* MoviesViewController.swift */,
 				F506C2721FC0B99A00B85511 /* RoundButton.swift */,
+				F50E746E1FC5E98E0041D0D5 /* PackageOfMovies.swift */,
+				F5C451051FC7545D0087F13E /* MovieCell.swift */,
 				F5F4E07A1FC1C32F00670F41 /* InternetConnection.swift */,
-				F59A8B0D1FB9FB5D002A689E /* Login.storyboard */,
-				F5F4E07C1FC20C7900670F41 /* Movies.storyboard */,
+				F50E74731FC6028F0041D0D5 /* Storyboards */,
 				F59A8B101FB9FB5D002A689E /* Assets.xcassets */,
-				F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */,
 				F59A8B151FB9FB5D002A689E /* Info.plist */,
 			);
 			path = "Movie App";
@@ -264,6 +299,7 @@
 				F506C26F1FC096F800B85511 /* MoviesViewController.swift in Sources */,
 				F512F0571FC4859B00AED8A7 /* MovieAPI.swift in Sources */,
 				F506C2731FC0B99A00B85511 /* RoundButton.swift in Sources */,
+				F5C451061FC7545D0087F13E /* MovieCell.swift in Sources */,
 				F506C26D1FC0912100B85511 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
