@@ -8,5 +8,6 @@ target 'Movie App' do
   # Pods for Movie App
 pod 'Moya', '~> 10.0'
 pod 'KeychainSwift', '~> 10.0'
+pod 'Kingfisher', '~> 4.3'
 
 end

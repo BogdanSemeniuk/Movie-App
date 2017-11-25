@@ -1,23 +1,26 @@
 PODS:
   - Alamofire (4.5.1)
   - KeychainSwift (10.0.0)
-  - Moya (10.0.0):
-    - Moya/Core (= 10.0.0)
-  - Moya/Core (10.0.0):
+  - Kingfisher (4.3.1)
+  - Moya (10.0.1):
+    - Moya/Core (= 10.0.1)
+  - Moya/Core (10.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
   - Result (3.2.4)
 
 DEPENDENCIES:
   - KeychainSwift (~> 10.0)
+  - Kingfisher (~> 4.3)
   - Moya (~> 10.0)
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
-  Moya: adb58b0f4e58430db43cc6e2f6ebab1836501186
+  Kingfisher: 75541c4b62f02e1fde6f9772303de3d9ebe8f5b3
+  Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
 
-PODFILE CHECKSUM: 710c863b2c9ab8b629807168c9a52501a2c82d9a
+PODFILE CHECKSUM: 3e1aab1ec3a037876c8ce49b9897c0bb60a6b096
 
 COCOAPODS: 1.3.1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -39,18 +40,30 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let movie = moviesContent[indexPath.row]
+ 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        let cell = MovieCell()
-        cell.backgroundColor = UIColor.red
-        //cell.posterImage = UIImageView.init(image: UIImage(named: "playstation_320x480"))
-        cell.posterImage.image = UIImage(named: "playstation_320x480")
+        guard let posterPath = movie.posterPath else {return UITableViewCell()}
+        let urlPoster = createPosterURL(path: posterPath)
+        cell.posterImageView.kf.setImage(with: urlPoster)
+        
+        cell.titleLabel.text = movie.title
+        cell.ratingLabel.text = String(movie.voteAverage)
+        
         return cell
     }
-    
+
     // MARK: - Methods
     
-    func reloadTableView() {
+    private func reloadTableView() {
         tableView.reloadData()
+    }
+    
+    private func createPosterURL(path: String) -> URL? {
+        let url = URL(string: "http://image.tmdb.org")
+        let path = "t/p/w342/" + path
+        let posterPath = URL(string: path, relativeTo: url!)
+        return posterPath
     }
 }

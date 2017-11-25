@@ -20,6 +20,8 @@
 		F59A8B111FB9FB5D002A689E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B101FB9FB5D002A689E /* Assets.xcassets */; };
 		F59A8B141FB9FB5D002A689E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */; };
 		F5C451061FC7545D0087F13E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C451051FC7545D0087F13E /* MovieCell.swift */; };
+		F5C622E81FC9FC88003C49AF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C622E71FC9FC88003C49AF /* CoreDataManager.swift */; };
+		F5C623651FC9FEB3003C49AF /* MovieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5C623631FC9FEB3003C49AF /* MovieApp.xcdatamodeld */; };
 		F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */; };
 		F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01A4F1FBB544400A4413F /* LoginAPI.swift */; };
 		F5F4E07B1FC1C32F00670F41 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F4E07A1FC1C32F00670F41 /* InternetConnection.swift */; };
@@ -44,6 +46,8 @@
 		F59A8B131FB9FB5D002A689E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F59A8B151FB9FB5D002A689E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5C451051FC7545D0087F13E /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		F5C622E71FC9FC88003C49AF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F5C623641FC9FEB3003C49AF /* MovieApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieApp.xcdatamodel; sourceTree = "<group>"; };
 		F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		F5E01A4F1FBB544400A4413F /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		F5F4E07A1FC1C32F00670F41 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			children = (
 				F506C2701FC0A84300B85511 /* LoginPageViewController.swift */,
 				F506C26E1FC096F800B85511 /* MoviesViewController.swift */,
+				F5C451051FC7545D0087F13E /* MovieCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -143,14 +148,23 @@
 				F50E74721FC601FB0041D0D5 /* ViewControllers */,
 				F506C26C1FC0912100B85511 /* Keychain.swift */,
 				F506C2721FC0B99A00B85511 /* RoundButton.swift */,
-				F50E746E1FC5E98E0041D0D5 /* PackageOfMovies.swift */,
-				F5C451051FC7545D0087F13E /* MovieCell.swift */,
 				F5F4E07A1FC1C32F00670F41 /* InternetConnection.swift */,
+				F50E746E1FC5E98E0041D0D5 /* PackageOfMovies.swift */,
+				F5C623661FC9FEC0003C49AF /* CoreData */,
 				F50E74731FC6028F0041D0D5 /* Storyboards */,
 				F59A8B101FB9FB5D002A689E /* Assets.xcassets */,
 				F59A8B151FB9FB5D002A689E /* Info.plist */,
 			);
 			path = "Movie App";
+			sourceTree = "<group>";
+		};
+		F5C623661FC9FEC0003C49AF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F5C622E71FC9FC88003C49AF /* CoreDataManager.swift */,
+				F5C623631FC9FEB3003C49AF /* MovieApp.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +263,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Movie App/Pods-Movie App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
@@ -256,6 +271,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
@@ -293,9 +309,11 @@
 				F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */,
 				F50E746F1FC5E98E0041D0D5 /* PackageOfMovies.swift in Sources */,
 				F512F0591FC4940A00AED8A7 /* MovieManager.swift in Sources */,
+				F5C623651FC9FEB3003C49AF /* MovieApp.xcdatamodeld in Sources */,
 				F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */,
 				F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */,
 				F5F4E07B1FC1C32F00670F41 /* InternetConnection.swift in Sources */,
+				F5C622E81FC9FC88003C49AF /* CoreDataManager.swift in Sources */,
 				F506C26F1FC096F800B85511 /* MoviesViewController.swift in Sources */,
 				F512F0571FC4859B00AED8A7 /* MovieAPI.swift in Sources */,
 				F506C2731FC0B99A00B85511 /* RoundButton.swift in Sources */,
@@ -444,7 +462,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Movie-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -459,7 +477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Movie-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -485,6 +503,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F5C623631FC9FEB3003C49AF /* MovieApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F5C623641FC9FEB3003C49AF /* MovieApp.xcdatamodel */,
+			);
+			currentVersion = F5C623641FC9FEB3003C49AF /* MovieApp.xcdatamodel */;
+			path = MovieApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F59A8AFE1FB9FB5C002A689E /* Project object */;
 }
