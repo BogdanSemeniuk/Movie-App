@@ -40,6 +40,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        tableView.estimatedRowHeight = 500.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         let movie = moviesContent[indexPath.row]
  
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
@@ -50,10 +54,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.titleLabel.text = movie.title
         cell.ratingLabel.text = String(movie.voteAverage)
-        
+
         return cell
     }
-
+    
     // MARK: - Methods
     
     private func reloadTableView() {

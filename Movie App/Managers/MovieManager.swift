@@ -20,7 +20,6 @@ class MovieManager {
                 do {
                     let moviesPackage = try JSONDecoder().decode(PackageOfMovies.self, from: responseData)
                     complition(moviesPackage)
-                    //print(moviesPackage.results![0])
                 } catch let error {
                     print(error)
                 }
