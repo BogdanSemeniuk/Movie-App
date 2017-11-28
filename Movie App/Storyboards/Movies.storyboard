@@ -71,14 +71,13 @@
                                                         <constraint firstAttribute="width" constant="22" id="eru-8u-IOS"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZj-oF-RQd">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZj-oF-RQd">
                                                     <rect key="frame" x="30" y="436" width="276" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="17" id="Umk-q4-ZkD"/>
                                                         <constraint firstAttribute="width" constant="276" id="ig4-so-T6U"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Courier-Oblique" family="Courier" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="Courier-Oblique" family="Courier" pointSize="13"/>
+                                                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

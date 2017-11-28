@@ -18,6 +18,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Properties
     
     let moviesManager = MovieManager()
+    let genresManager = GenreManager()
     var moviesContent = [Movie]()
     
     // MARK: - Life Cycl
@@ -25,6 +26,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if CoreDataManager.instance.storageIsEmpty() {
+            genresManager.getGenres(complition: { allGenres in
+                CoreDataManager.instance.saveGanres(genres: allGenres.genres)
+            })
+        }
         moviesManager.getPopularMovies(page: 1, complition: { [unowned self] movies in
             if let result = movies.results {
                 self.moviesContent = result
@@ -54,7 +60,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.titleLabel.text = movie.title
         cell.ratingLabel.text = String(movie.voteAverage)
-
+        cell.genresLabel.text = createGenresString(genresId: movie.genreIds)
+        
         return cell
     }
     
@@ -69,5 +76,20 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let path = "t/p/w342/" + path
         let posterPath = URL(string: path, relativeTo: url!)
         return posterPath
+    }
+    
+    private func createGenresString(genresId: [Int]) -> String {
+        var genresString = ""
+        let count = genresId.count
+        for (index, id) in genresId.enumerated() {
+            let genre = CoreDataManager.instance.getGenreNameWithId(id: id)
+            switch index {
+            case count - 1:
+                genresString = genresString + genre
+            default:
+                genresString = genresString + genre + "," + " "
+            }
+        }
+        return genresString
     }
 }

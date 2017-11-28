@@ -1,25 +1,25 @@
 //
-//  MovieManager.swift
+//  GenreManager.swift
 //  Movie App
 //
-//  Created by Богдан Семенюк on 21.11.2017.
+//  Created by Богдан Семенюк on 28.11.2017.
 //  Copyright © 2017 Bogdan Semeniuk. All rights reserved.
 //
 
 import Foundation
 import Moya
 
-class MovieManager {
-    private lazy var provider = MoyaProvider<MovieAPI>()
+class GenreManager {
+    private lazy var provider = MoyaProvider<GenreAPI>()
     
-    func getPopularMovies(page: Int, complition: @escaping (PackageOfMovies) -> ()) {
-        provider.request(.getPopularMovies(page: page)) { (result) in
+    func getGenres(complition: @escaping (GenresList) -> ()) {
+        provider.request(.getAllGenre()) { (result) in
             switch result {
             case let .success(moyaResponse):
                 let responseData = moyaResponse.data
                 do {
-                    let moviesPackage = try JSONDecoder().decode(PackageOfMovies.self, from: responseData)
-                    complition(moviesPackage)
+                    let genresList = try JSONDecoder().decode(GenresList.self, from: responseData)
+                    complition(genresList)
                 } catch let error {
                     print(error)
                 }

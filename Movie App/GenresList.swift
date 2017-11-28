@@ -9,7 +9,7 @@
 import Foundation
 
 struct GenresList: Decodable {
-    var allGenres: [Genre]
+    var genres: [Genre]
 }
 
 struct Genre: Decodable {
