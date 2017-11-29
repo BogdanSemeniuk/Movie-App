@@ -17,9 +17,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Properties
     
-    let moviesManager = MovieManager()
-    let genresManager = GenreManager()
-    var moviesContent = [Movie]()
+    private let moviesManager = MovieManager()
+    private let genresManager = GenreManager()
+    private var moviesContent = [Movie]()
+    private var currentPage = 1
+    private var responseFetchedUp = false
     
     // MARK: - Life Cycl
     
@@ -31,12 +33,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 CoreDataManager.instance.saveGanres(genres: allGenres.genres)
             })
         }
-        moviesManager.getPopularMovies(page: 1, complition: { [unowned self] movies in
-            if let result = movies.results {
-                self.moviesContent = result
-                self.reloadTableView()
-            }
-        })
+        getMovies()
     }
     
     // MARK: - Table View
@@ -65,6 +62,18 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    // MARK: - Scroll View
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height && responseFetchedUp {
+            getMovies()
+            responseFetchedUp = false
+        }
+    }
+    
     // MARK: - Methods
     
     private func reloadTableView() {
@@ -91,5 +100,16 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         return genresString
+    }
+    
+    private func getMovies() {
+        moviesManager.getPopularMovies(page: currentPage, complition: { [unowned self] movies in
+            if let result = movies.results {
+                self.moviesContent+=result
+                self.reloadTableView()
+                self.currentPage+=1
+                self.responseFetchedUp = true
+            }
+        })
     }
 }
