@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let loginManager = LoginManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // TODO : - Remove it
         Keychain.sharedStorage.clear()
         let storyboardName = loginManager.isLogined ? "Movies" : "Login"
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
@@ -29,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
         CoreDataStack.saveContext()
     }
 
@@ -40,4 +39,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

@@ -29,7 +29,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         if CoreDataManager.instance.storageIsEmpty() {
-            genresManager.getGenres(complition: { allGenres in
+            genresManager.getGenres(complition: {allGenres in
                 CoreDataManager.instance.saveGanres(genres: allGenres.genres)
             })
         }
@@ -103,7 +103,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     private func getMovies() {
-        moviesManager.getPopularMovies(page: currentPage, complition: { [unowned self] movies in
+        moviesManager.getUpcomingMovies(page: currentPage, complition: { [unowned self] movies in
             if let result = movies.results {
                 self.moviesContent+=result
                 self.reloadTableView()

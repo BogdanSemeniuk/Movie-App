@@ -39,9 +39,9 @@ class CoreDataManager {
     func saveGanres(genres: [Genre]) {
         for genre in genres {
             let entity = NSEntityDescription.entity(forEntityName: "GenreObj", in: context)
-            let genreObject = NSManagedObject(entity: entity!, insertInto: context)
-            genreObject.setValue(genre.id, forKey: "id")
-            genreObject.setValue(genre.name, forKey: "name")
+            let genreObject = GenreObj(entity: entity!, insertInto: context)
+            genreObject.id = Int16(genre.id)
+            genreObject.name = genre.name
             saveContext()
         }
     }
@@ -69,10 +69,10 @@ class CoreDataManager {
     func getGenreNameWithId(id: Int) -> String {
         guard let objects = allObjectsInStorage() else {return "Storage is empty"}
         for obj in objects {
-            guard let objId = obj.value(forKey: "id") as? Int else {return ""}
-            if id == objId {
-                guard let name = obj.value(forKey: "name") as? String else {return ""}
-                return name
+            if let genre = obj as? GenreObj {
+                if genre.id == id {
+                    return genre.name!
+                }
             }
         }
         return ""

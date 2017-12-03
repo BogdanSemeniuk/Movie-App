@@ -12,8 +12,8 @@ import Moya
 class MovieManager {
     private lazy var provider = MoyaProvider<MovieAPI>()
     
-    func getPopularMovies(page: Int, complition: @escaping (PackageOfMovies) -> ()) {
-        provider.request(.getPopularMovies(page: page)) { (result) in
+    func getUpcomingMovies(page: Int, complition: @escaping (PackageOfMovies) -> ()) {
+        provider.request(.getUpcomingMovies(page: page)) { (result) in
             switch result {
             case let .success(moyaResponse):
                 let responseData = moyaResponse.data

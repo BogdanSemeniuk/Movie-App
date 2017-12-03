@@ -11,6 +11,7 @@ import Moya
 
 enum MovieAPI {
     case getPopularMovies(page: Int)
+    case getUpcomingMovies(page: Int)
 }
 
 extension MovieAPI: TargetType {
@@ -19,7 +20,12 @@ extension MovieAPI: TargetType {
     }
     
     var path: String {
-        return "movie/popular"
+        switch self {
+        case .getPopularMovies(page: _):
+            return "movie/popular"
+        case .getUpcomingMovies(page: _):
+            return "movie/upcoming"
+        }
     }
     
     var method: Moya.Method {
@@ -32,7 +38,7 @@ extension MovieAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .getPopularMovies(page: let page):
+        case .getPopularMovies(page: let page), .getUpcomingMovies(page: let page):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "page":page, "region":"UA"], encoding: URLEncoding.queryString)
         }
     }
