@@ -28,4 +28,21 @@ class MovieManager {
             }
         }
     }
+    
+    func getMovieDetails(id: Int, complition:@escaping (MovieDetails) -> ()) {
+        provider.request(.getMovieDetails(id: id)) { (result) in
+            switch result {
+            case let .success(moyaResponse):
+                let responseData = moyaResponse.data
+                do {
+                    let movieDetails = try JSONDecoder().decode(MovieDetails.self, from: responseData)
+                    complition(movieDetails)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error.errorDescription ?? "Unknown error")
+            }
+        }
+    }
 }

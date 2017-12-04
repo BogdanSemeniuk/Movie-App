@@ -63,6 +63,12 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "MovieDetails") as! MovieDetailsViewController
+        vc.movieId = moviesContent[indexPath.row].id
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - Scroll View
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

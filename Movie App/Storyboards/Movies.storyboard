@@ -146,7 +146,7 @@
         <!--Movie Details Controller-->
         <scene sceneID="wGQ-SI-ygk">
             <objects>
-                <viewController id="sTi-6B-4rB" userLabel="Movie Details Controller" customClass="MovieDetailViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetails" id="sTi-6B-4rB" userLabel="Movie Details Controller" customClass="MovieDetailsViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wNq-WR-rdH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

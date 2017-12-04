@@ -12,6 +12,7 @@ import Moya
 enum MovieAPI {
     case getPopularMovies(page: Int)
     case getUpcomingMovies(page: Int)
+    case getMovieDetails(id: Int)
 }
 
 extension MovieAPI: TargetType {
@@ -25,6 +26,8 @@ extension MovieAPI: TargetType {
             return "movie/popular"
         case .getUpcomingMovies(page: _):
             return "movie/upcoming"
+        case .getMovieDetails(id: let id):
+            return "movie/\(id)"
         }
     }
     
@@ -40,6 +43,8 @@ extension MovieAPI: TargetType {
         switch self {
         case .getPopularMovies(page: let page), .getUpcomingMovies(page: let page):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "page":page, "region":"UA"], encoding: URLEncoding.queryString)
+        case .getMovieDetails(id:_):
+            return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "append_to_response":"credits"], encoding: URLEncoding.queryString)
         }
     }
     
