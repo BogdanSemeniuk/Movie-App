@@ -26,7 +26,7 @@ struct Movie: Decodable {
         case id
         case voteCount = "vote_count"
         case voteAverage = "vote_average"
-        case title
+        case title = "original_title"
         case posterPath = "poster_path"
         case overview
         case releaseDate = "release_date"
