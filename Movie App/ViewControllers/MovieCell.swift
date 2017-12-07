@@ -10,25 +10,28 @@ import UIKit
 
 class MovieCell: UITableViewCell {
 
+    let genreManager = GenreManager()
+    
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        posterImageView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        posterImageView.layer.shadowRadius = 3
+        posterImageView.layer.shadowOpacity = 0.7
+        posterImageView.layer.shadowPath = UIBezierPath(rect: posterImageView.bounds).cgPath
+        posterImageView.layer.shouldRasterize = true
+        posterImageView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
     func createGenresString(genresId: [Int]) -> String {
-        var genresString = ""
-        let count = genresId.count
-        for (index, id) in genresId.enumerated() {
-            let genre = CoreDataManager.instance.getGenreNameWithId(id: id)
-            switch index {
-            case count - 1:
-                genresString = genresString + genre
-            default:
-                genresString = genresString + genre + "," + " "
-            }
-        }
-        return "Genres: " + genresString
+        return "Genres: " + genresId.map({ id in
+            genreManager.getGenreName(id: id)
+        }).joined(separator: ", ")
     }
     
     func createYearString(date: String) -> String {

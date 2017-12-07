@@ -29,13 +29,13 @@ class MovieManager {
         }
     }
     
-    func getMovieDetails(id: Int, complition:@escaping (MovieDetails) -> ()) {
+    func getMovieDetails(id: Int, complition:@escaping (Movie) -> ()) {
         provider.request(.getMovieDetails(id: id)) { (result) in
             switch result {
             case let .success(moyaResponse):
                 let responseData = moyaResponse.data
                 do {
-                    let movieDetails = try JSONDecoder().decode(MovieDetails.self, from: responseData)
+                    let movieDetails = try JSONDecoder().decode(Movie.self, from: responseData)
                     complition(movieDetails)
                 } catch let error {
                     print(error)

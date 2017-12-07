@@ -28,11 +28,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if CoreDataManager.instance.storageIsEmpty() {
-            genresManager.getGenres(complition: {allGenres in
-                CoreDataManager.instance.saveGanres(genres: allGenres.genres)
-            })
-        }
+        genresManager.updateIfNeeded()
         getMovies()
     }
     
@@ -57,7 +53,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.titleLabel.text = movie.title
         cell.ratingLabel.text = String(movie.voteAverage)
-        cell.genresLabel.text = cell.createGenresString(genresId: movie.genreIds)
+        cell.genresLabel.text = cell.createGenresString(genresId: movie.genreIds!)
         cell.yearLabel.text = cell.createYearString(date: movie.releaseDate)
         
         return cell
@@ -65,7 +61,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "MovieDetails") as! MovieDetailsViewController
-        vc.movieId = moviesContent[indexPath.row].id
+        vc.movieDetails = moviesContent[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

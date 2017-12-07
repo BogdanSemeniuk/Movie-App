@@ -12,18 +12,17 @@ class MovieDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var movieId: Int? = nil
     private let moviesManager = MovieManager()
-    private var movieDetails: MovieDetails!
+    var movieDetails: Movie!
     
     // MARK: - Life Cycl
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        moviesManager.getMovieDetails(id: movieId!) { [unowned self] (movieInfo) in
-            self.movieDetails = movieInfo
-            print(self.movieDetails)
+        moviesManager.getMovieDetails(id: movieDetails.id) { [weak self] (movieInfo) in
+            self?.movieDetails = movieInfo
+            
         }
     }
 }

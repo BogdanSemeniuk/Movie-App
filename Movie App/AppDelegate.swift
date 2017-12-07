@@ -28,14 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        CoreDataStack.saveContext()
-    }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Token received"), object: nil)
-        
         return true
     }
 }
