@@ -53,8 +53,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.titleLabel.text = movie.title
         cell.ratingLabel.text = String(movie.voteAverage)
-        cell.genresLabel.text = cell.createGenresString(genresId: movie.genreIds!)
-        cell.yearLabel.text = cell.createYearString(date: movie.releaseDate)
+        cell.genresLabel.text = createGenresString(genresId: movie.genreIds!)
+        cell.yearLabel.text = createYearString(date: movie.releaseDate)
         
         return cell
     }

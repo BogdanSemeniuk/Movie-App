@@ -19,6 +19,7 @@
 		F512F0591FC4940A00AED8A7 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512F0581FC4940A00AED8A7 /* MovieManager.swift */; };
 		F51552FF1FCDCC7F00D96A24 /* GenreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51552FE1FCDCC7F00D96A24 /* GenreManager.swift */; };
 		F515533E1FCDEEE700D96A24 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515533D1FCDEEE700D96A24 /* CoreDataManager.swift */; };
+		F541B0421FDDE717002F98D8 /* MovieDetailsSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541B0411FDDE717002F98D8 /* MovieDetailsSupport.swift */; };
 		F5427E3D1FD830F800C2C279 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5427E3C1FD830F800C2C279 /* Country.swift */; };
 		F55447221FD425AD004900F5 /* GenreObj+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55447201FD425AD004900F5 /* GenreObj+CoreDataClass.swift */; };
 		F55447231FD425AD004900F5 /* GenreObj+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55447211FD425AD004900F5 /* GenreObj+CoreDataProperties.swift */; };
@@ -51,6 +52,7 @@
 		F512F0581FC4940A00AED8A7 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		F51552FE1FCDCC7F00D96A24 /* GenreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreManager.swift; sourceTree = "<group>"; };
 		F515533D1FCDEEE700D96A24 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F541B0411FDDE717002F98D8 /* MovieDetailsSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsSupport.swift; sourceTree = "<group>"; };
 		F5427E3C1FD830F800C2C279 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		F55447201FD425AD004900F5 /* GenreObj+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreObj+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F55447211FD425AD004900F5 /* GenreObj+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreObj+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				F506C2701FC0A84300B85511 /* LoginPageViewController.swift */,
 				F506C26E1FC096F800B85511 /* MoviesViewController.swift */,
 				F50961DE1FD5B2F200D33581 /* MovieDetailsViewController.swift */,
+				F541B0411FDDE717002F98D8 /* MovieDetailsSupport.swift */,
 				F5C451051FC7545D0087F13E /* MovieCell.swift */,
 			);
 			path = ViewControllers;
@@ -298,6 +301,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -306,6 +310,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -340,6 +345,7 @@
 				F59A8B0A1FB9FB5D002A689E /* AppDelegate.swift in Sources */,
 				F51552FF1FCDCC7F00D96A24 /* GenreManager.swift in Sources */,
 				F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */,
+				F541B0421FDDE717002F98D8 /* MovieDetailsSupport.swift in Sources */,
 				F50E746F1FC5E98E0041D0D5 /* PackageOfMovies.swift in Sources */,
 				F50961DF1FD5B2F200D33581 /* MovieDetailsViewController.swift in Sources */,
 				F50961E21FD5C08F00D33581 /* Credits.swift in Sources */,

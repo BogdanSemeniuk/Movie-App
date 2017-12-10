@@ -9,8 +9,6 @@
 import UIKit
 
 class MovieCell: UITableViewCell {
-
-    let genreManager = GenreManager()
     
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,16 +24,5 @@ class MovieCell: UITableViewCell {
         posterImageView.layer.shadowPath = UIBezierPath(rect: posterImageView.bounds).cgPath
         posterImageView.layer.shouldRasterize = true
         posterImageView.layer.rasterizationScale = UIScreen.main.scale
-    }
-    
-    func createGenresString(genresId: [Int]) -> String {
-        return "Genres: " + genresId.map({ id in
-            genreManager.getGenreName(id: id)
-        }).joined(separator: ", ")
-    }
-    
-    func createYearString(date: String) -> String {
-        let year = date.prefix(4)
-        return "Release year: " + year
     }
 }
