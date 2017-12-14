@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class MovieDetailsViewController: UIViewController, RatingViewDelegate {
+class MovieDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -23,25 +23,26 @@ class MovieDetailsViewController: UIViewController, RatingViewDelegate {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var ratingView: RatingView!
+    @IBOutlet weak var ratingLabel: UILabel!
     
     private let moviesManager = MovieManager()
     var movieDetails: Movie!
-    var rating: Double {
-        return Double(movieDetails.voteAverage)
-    }
     
     // MARK: - Life Cycl
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ratingView.delegate = self
         titleLabel.text = movieDetails.title
         releaseLabel.text = createYearString(date: movieDetails.releaseDate)
         genresLabel.text = createGenresString(genresId: movieDetails.genreIds!)
         overviewLabel.text = "Overview: " + movieDetails.overview
         budgetLabel.text = ""
         countryLabel.text = ""
+        ratingLabel.text = "\(movieDetails.voteAverage)"
+        ratingLabel.textColor = UIColor.white
+        ratingLabel.superview?.bringSubview(toFront: ratingLabel)
+        
         
         guard let posterPath = movieDetails.posterPath else {return}
         let urlPoster = createPosterURL(path: posterPath)
@@ -52,5 +53,11 @@ class MovieDetailsViewController: UIViewController, RatingViewDelegate {
             self?.budgetLabel.text = createBudgetString(budget: movieInfo.budget)
             self?.countryLabel.text = createCountriesString(countries: movieInfo.countries)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        ratingView.showRatingWithAnimation(rating: movieDetails.voteAverage)
     }
 }
