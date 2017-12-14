@@ -9,6 +9,5 @@ target 'Movie App' do
 pod 'Moya', '~> 10.0'
 pod 'KeychainSwift', '~> 10.0'
 pod 'Kingfisher', '~> 4.3'
-pod 'KYCircularProgress', '~> 1.0'
 
 end

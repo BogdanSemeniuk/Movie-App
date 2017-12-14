@@ -14,6 +14,7 @@
 		F506C2731FC0B99A00B85511 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C2721FC0B99A00B85511 /* RoundButton.swift */; };
 		F50961DF1FD5B2F200D33581 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961DE1FD5B2F200D33581 /* MovieDetailsViewController.swift */; };
 		F50961E21FD5C08F00D33581 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50961E11FD5C08F00D33581 /* Credits.swift */; };
+		F5099C901FDEDCA000A0E963 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5099C8F1FDEDCA000A0E963 /* RatingView.swift */; };
 		F50E746F1FC5E98E0041D0D5 /* PackageOfMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50E746E1FC5E98E0041D0D5 /* PackageOfMovies.swift */; };
 		F512F0571FC4859B00AED8A7 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512F0561FC4859B00AED8A7 /* MovieAPI.swift */; };
 		F512F0591FC4940A00AED8A7 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512F0581FC4940A00AED8A7 /* MovieManager.swift */; };
@@ -47,6 +48,7 @@
 		F506C2721FC0B99A00B85511 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F50961DE1FD5B2F200D33581 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		F50961E11FD5C08F00D33581 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		F5099C8F1FDEDCA000A0E963 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		F50E746E1FC5E98E0041D0D5 /* PackageOfMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageOfMovies.swift; sourceTree = "<group>"; };
 		F512F0561FC4859B00AED8A7 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
 		F512F0581FC4940A00AED8A7 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				F50961DE1FD5B2F200D33581 /* MovieDetailsViewController.swift */,
 				F541B0411FDDE717002F98D8 /* MovieDetailsSupport.swift */,
 				F5C451051FC7545D0087F13E /* MovieCell.swift */,
+				F5099C8F1FDEDCA000A0E963 /* RatingView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -297,7 +300,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Movie App/Pods-Movie App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KYCircularProgress/KYCircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -306,7 +308,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KYCircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -345,6 +346,7 @@
 				F59A8B0A1FB9FB5D002A689E /* AppDelegate.swift in Sources */,
 				F51552FF1FCDCC7F00D96A24 /* GenreManager.swift in Sources */,
 				F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */,
+				F5099C901FDEDCA000A0E963 /* RatingView.swift in Sources */,
 				F541B0421FDDE717002F98D8 /* MovieDetailsSupport.swift in Sources */,
 				F50E746F1FC5E98E0041D0D5 /* PackageOfMovies.swift in Sources */,
 				F50961DF1FD5B2F200D33581 /* MovieDetailsViewController.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class MovieDetailsViewController: UIViewController {
+class MovieDetailsViewController: UIViewController, RatingViewDelegate {
     
     // MARK: - Properties
     
@@ -22,15 +22,20 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var actorsLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var ratingView: RatingView!
     
     private let moviesManager = MovieManager()
     var movieDetails: Movie!
+    var rating: Double {
+        return Double(movieDetails.voteAverage)
+    }
     
     // MARK: - Life Cycl
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ratingView.delegate = self
         titleLabel.text = movieDetails.title
         releaseLabel.text = createYearString(date: movieDetails.releaseDate)
         genresLabel.text = createGenresString(genresId: movieDetails.genreIds!)

@@ -244,6 +244,14 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jq-Pf-BvK" customClass="RatingView" customModule="Movie_App" customModuleProvider="target">
+                                                <rect key="frame" x="140.5" y="147" width="50" height="50"/>
+                                                <color key="backgroundColor" red="0.043137254901960784" green="0.33725490196078434" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="GfH-mS-Tlg"/>
+                                                    <constraint firstAttribute="width" constant="50" id="gl8-ll-zvq"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -261,6 +269,7 @@
                                             <constraint firstAttribute="trailing" secondItem="waM-My-JtL" secondAttribute="trailing" constant="10" id="HEs-xi-8v6"/>
                                             <constraint firstItem="LAz-1Z-qP7" firstAttribute="top" secondItem="kzH-52-inM" secondAttribute="bottom" constant="10" id="JXg-3f-vAC"/>
                                             <constraint firstItem="kzH-52-inM" firstAttribute="top" secondItem="b64-6K-r3T" secondAttribute="top" id="KQf-fC-LOs"/>
+                                            <constraint firstItem="7Jq-Pf-BvK" firstAttribute="top" secondItem="aHi-9Y-J4b" secondAttribute="bottom" constant="10" id="O5e-Zz-K48"/>
                                             <constraint firstItem="waM-My-JtL" firstAttribute="leading" secondItem="VKV-O3-NyU" secondAttribute="leading" constant="10" id="OF6-UY-vpZ"/>
                                             <constraint firstItem="b64-6K-r3T" firstAttribute="top" secondItem="Rjf-Vb-k0U" secondAttribute="bottom" constant="10" id="Pq5-sU-OAy"/>
                                             <constraint firstAttribute="trailing" secondItem="Rjf-Vb-k0U" secondAttribute="trailing" constant="10" id="TwV-9f-koK"/>
@@ -279,6 +288,7 @@
                                             <constraint firstAttribute="trailing" secondItem="4uW-h8-imb" secondAttribute="trailing" constant="10" id="uPU-dq-1sp"/>
                                             <constraint firstItem="kzH-52-inM" firstAttribute="leading" secondItem="b64-6K-r3T" secondAttribute="trailing" constant="10" id="uQd-Qo-c8g"/>
                                             <constraint firstAttribute="trailing" secondItem="kzH-52-inM" secondAttribute="trailing" constant="10" id="wXT-e8-aa6"/>
+                                            <constraint firstItem="7Jq-Pf-BvK" firstAttribute="leading" secondItem="aHi-9Y-J4b" secondAttribute="leading" id="x88-UV-SVH"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -310,6 +320,7 @@
                         <outlet property="genresLabel" destination="LAz-1Z-qP7" id="lod-nD-TS2"/>
                         <outlet property="overviewLabel" destination="9mp-f3-Zz4" id="3On-fX-M8y"/>
                         <outlet property="posterImageView" destination="b64-6K-r3T" id="O2N-Lg-Dj0"/>
+                        <outlet property="ratingView" destination="7Jq-Pf-BvK" id="jeQ-Oe-q2e"/>
                         <outlet property="releaseLabel" destination="kzH-52-inM" id="uXP-Ai-jAB"/>
                         <outlet property="titleLabel" destination="Rjf-Vb-k0U" id="vjf-uy-cXy"/>
                     </connections>
