@@ -21,11 +21,13 @@ class RatingView: UIView {
     private let arcLayer = CAShapeLayer()
     private let circleLayer = CALayer()
     private let textLayer = CATextLayer()
+    private var ratingLabel: UILabel!
     
     override func awakeFromNib() {
         self.backgroundColor = UIColor.clear
         circleLayerSetUp()
         arcLayerSetUp()
+        addRatingLabel()
     }
     
     private func circleLayerSetUp() {
@@ -70,5 +72,24 @@ class RatingView: UIView {
     func showRatingWithAnimation(rating: Float) {
         let progress = CGFloat(rating / 10)
         animateCircleLayer(progress: progress)
+        
+        let attributs = [NSAttributedStringKey.font : UIFont(name: "AmericanTypewriter-CondensedBold", size: 20.0)]
+        let attributedStr = NSMutableAttributedString(string: String(rating), attributes: attributs)
+        ratingLabel.attributedText = attributedStr
+    }
+    
+    private func addRatingLabel() {
+        ratingLabel = UILabel(frame: self.bounds)
+        self.addSubview(ratingLabel)
+        
+        ratingLabel.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = NSLayoutConstraint(item: ratingLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let bottomConstraint = NSLayoutConstraint(item: ratingLabel, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let leadingConstraint = NSLayoutConstraint(item: ratingLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0)
+        let trailingConstraint = NSLayoutConstraint(item: ratingLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+        self.addConstraints([topConstraint, bottomConstraint, leadingConstraint, trailingConstraint])
+        
+        ratingLabel.textAlignment = .center
+        ratingLabel.textColor = UIColor.white
     }
 }

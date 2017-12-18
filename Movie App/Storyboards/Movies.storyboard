@@ -249,22 +249,10 @@
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jq-Pf-BvK" customClass="RatingView" customModule="Movie_App" customModuleProvider="target">
                                                 <rect key="frame" x="140.5" y="149" width="50" height="50"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbu-46-iGi">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter-CondensedBold" family="American Typewriter" pointSize="20"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
                                                 <color key="backgroundColor" red="0.15103787000109897" green="0.69071158872643101" blue="0.45408637482671066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="pbu-46-iGi" secondAttribute="bottom" id="2dD-m5-oqS"/>
-                                                    <constraint firstAttribute="trailing" secondItem="pbu-46-iGi" secondAttribute="trailing" id="G9b-4Z-ZzP"/>
                                                     <constraint firstAttribute="height" constant="50" id="GfH-mS-Tlg"/>
-                                                    <constraint firstItem="pbu-46-iGi" firstAttribute="top" secondItem="7Jq-Pf-BvK" secondAttribute="top" id="KvJ-oH-3kw"/>
                                                     <constraint firstAttribute="width" constant="50" id="gl8-ll-zvq"/>
-                                                    <constraint firstItem="pbu-46-iGi" firstAttribute="leading" secondItem="7Jq-Pf-BvK" secondAttribute="leading" id="u1r-yE-Qs6"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJF-Tg-4Ky">
@@ -293,12 +281,13 @@
                                             <constraint firstItem="k0k-Bo-12h" firstAttribute="top" secondItem="b64-6K-r3T" secondAttribute="bottom" constant="10" id="H85-f2-xer"/>
                                             <constraint firstAttribute="trailing" secondItem="waM-My-JtL" secondAttribute="trailing" constant="10" id="HEs-xi-8v6"/>
                                             <constraint firstItem="LAz-1Z-qP7" firstAttribute="top" secondItem="kzH-52-inM" secondAttribute="bottom" constant="10" id="JXg-3f-vAC"/>
-                                            <constraint firstItem="aJF-Tg-4Ky" firstAttribute="centerY" secondItem="pbu-46-iGi" secondAttribute="centerY" id="Jf9-Zu-fan"/>
                                             <constraint firstItem="kzH-52-inM" firstAttribute="top" secondItem="b64-6K-r3T" secondAttribute="top" id="KQf-fC-LOs"/>
                                             <constraint firstItem="7Jq-Pf-BvK" firstAttribute="top" secondItem="aHi-9Y-J4b" secondAttribute="bottom" constant="10" id="O5e-Zz-K48"/>
                                             <constraint firstItem="waM-My-JtL" firstAttribute="leading" secondItem="VKV-O3-NyU" secondAttribute="leading" constant="10" id="OF6-UY-vpZ"/>
                                             <constraint firstItem="b64-6K-r3T" firstAttribute="top" secondItem="Rjf-Vb-k0U" secondAttribute="bottom" constant="10" id="Pq5-sU-OAy"/>
+                                            <constraint firstItem="aJF-Tg-4Ky" firstAttribute="centerY" secondItem="7Jq-Pf-BvK" secondAttribute="centerY" id="S5C-Bi-cg1"/>
                                             <constraint firstAttribute="trailing" secondItem="Rjf-Vb-k0U" secondAttribute="trailing" constant="10" id="TwV-9f-koK"/>
+                                            <constraint firstItem="aJF-Tg-4Ky" firstAttribute="leading" secondItem="7Jq-Pf-BvK" secondAttribute="trailing" constant="5" id="UVx-Pd-Xoc"/>
                                             <constraint firstItem="aHi-9Y-J4b" firstAttribute="top" secondItem="VCj-6Z-ZeE" secondAttribute="bottom" constant="10" id="YGx-JD-fh6"/>
                                             <constraint firstAttribute="trailing" secondItem="9vl-79-JXH" secondAttribute="trailing" constant="10" id="cM6-oL-GgD"/>
                                             <constraint firstItem="waM-My-JtL" firstAttribute="top" secondItem="9mp-f3-Zz4" secondAttribute="bottom" constant="10" id="dK5-ZZ-RbL"/>
@@ -306,7 +295,6 @@
                                             <constraint firstAttribute="trailing" secondItem="aHi-9Y-J4b" secondAttribute="trailing" constant="10" id="dfY-eD-6zP"/>
                                             <constraint firstItem="Rjf-Vb-k0U" firstAttribute="top" secondItem="VKV-O3-NyU" secondAttribute="top" constant="10" id="eIS-FA-aUH"/>
                                             <constraint firstItem="4uW-h8-imb" firstAttribute="leading" secondItem="VKV-O3-NyU" secondAttribute="leading" constant="10" id="jWa-yN-z9w"/>
-                                            <constraint firstItem="aJF-Tg-4Ky" firstAttribute="leading" secondItem="pbu-46-iGi" secondAttribute="trailing" constant="5" id="k2U-I5-fsO"/>
                                             <constraint firstAttribute="trailing" secondItem="k0k-Bo-12h" secondAttribute="trailing" constant="10" id="lgY-EC-pLN"/>
                                             <constraint firstItem="k0k-Bo-12h" firstAttribute="leading" secondItem="b64-6K-r3T" secondAttribute="leading" id="lid-Up-VG9"/>
                                             <constraint firstItem="4uW-h8-imb" firstAttribute="top" secondItem="waM-My-JtL" secondAttribute="bottom" constant="10" id="mEA-dJ-nCY"/>
@@ -347,7 +335,6 @@
                         <outlet property="genresLabel" destination="LAz-1Z-qP7" id="lod-nD-TS2"/>
                         <outlet property="overviewLabel" destination="9mp-f3-Zz4" id="3On-fX-M8y"/>
                         <outlet property="posterImageView" destination="b64-6K-r3T" id="O2N-Lg-Dj0"/>
-                        <outlet property="ratingLabel" destination="pbu-46-iGi" id="hU9-UC-sdb"/>
                         <outlet property="ratingView" destination="7Jq-Pf-BvK" id="jeQ-Oe-q2e"/>
                         <outlet property="releaseLabel" destination="kzH-52-inM" id="uXP-Ai-jAB"/>
                         <outlet property="titleLabel" destination="Rjf-Vb-k0U" id="vjf-uy-cXy"/>

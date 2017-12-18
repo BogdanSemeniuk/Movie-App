@@ -23,7 +23,6 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var ratingView: RatingView!
-    @IBOutlet weak var ratingLabel: UILabel!
     
     private let moviesManager = MovieManager()
     var movieDetails: Movie!
@@ -39,10 +38,6 @@ class MovieDetailsViewController: UIViewController {
         overviewLabel.text = "Overview: " + movieDetails.overview
         budgetLabel.text = ""
         countryLabel.text = ""
-        ratingLabel.text = "\(movieDetails.voteAverage)"
-        ratingLabel.textColor = UIColor.white
-        ratingLabel.superview?.bringSubview(toFront: ratingLabel)
-        
         
         guard let posterPath = movieDetails.posterPath else {return}
         let urlPoster = createPosterURL(path: posterPath)
