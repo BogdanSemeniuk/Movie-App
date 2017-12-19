@@ -45,4 +45,21 @@ class MovieManager {
             }
         }
     }
+    
+    func getMovieImages(id: Int, complition:@escaping (Images) -> ()) {
+        provider.request(.getAllImages(id: id)) { (result) in
+            switch result {
+            case let .success(moyaResponse):
+                let responseData = moyaResponse.data
+                do {
+                    let images = try JSONDecoder().decode(Images.self, from: responseData)
+                    complition(images)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error.errorDescription ?? "Unknown error")
+            }
+        }
+    }
 }

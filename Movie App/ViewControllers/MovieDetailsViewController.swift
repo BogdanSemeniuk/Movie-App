@@ -50,6 +50,10 @@ class MovieDetailsViewController: UIViewController {
             self?.directorLabel.text = createDirectorsString(crew: movieInfo.credits?.crew)
             self?.actorsLabel.text = createActorsString(cast: movieInfo.credits?.cast)
         }
+        moviesManager.getMovieImages(id: movieDetails.id) { [weak self] (images) in
+            let vc = self?.childViewControllers.first as! ImagesCollectionViewController
+            vc.allImages = images
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
