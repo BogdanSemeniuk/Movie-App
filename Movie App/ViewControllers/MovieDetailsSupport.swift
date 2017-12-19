@@ -41,3 +41,15 @@ func createCountriesString(countries: [Country]?) -> String {
     return "Countries: " + countries
 }
 
+func createDirectorsString(crew: [Worker]?) -> String {
+    guard let crew = crew else {return "Directors: "}
+    let string = crew.filter {$0.job == "Director"}.map {$0.name}.joined(separator: ", ")
+    return "Directors: " + string
+}
+
+func createActorsString(cast: [Actor]?) -> String {
+    guard let cast = cast else {return "Actors: "}
+    let string = cast.filter {$0.order <= 8}.map {$0.name}.joined(separator: ", ")
+    return "Actors: " + string
+}
+

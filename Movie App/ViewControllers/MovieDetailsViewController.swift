@@ -47,6 +47,8 @@ class MovieDetailsViewController: UIViewController {
             self?.movieDetails = movieInfo
             self?.budgetLabel.text = createBudgetString(budget: movieInfo.budget)
             self?.countryLabel.text = createCountriesString(countries: movieInfo.countries)
+            self?.directorLabel.text = createDirectorsString(crew: movieInfo.credits?.crew)
+            self?.actorsLabel.text = createActorsString(cast: movieInfo.credits?.cast)
         }
     }
     
