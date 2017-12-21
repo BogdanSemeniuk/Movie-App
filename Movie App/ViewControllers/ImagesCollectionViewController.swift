@@ -13,23 +13,29 @@ private let reuseIdentifier = "Cell"
 
 class ImagesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var allImages: Images? {
+    var postersAndBackdrops: Images? {
         didSet {
             self.collectionView?.reloadData()
         }
     }
+    var allImages: [Image] {
+        guard let postersAndBackdrops = postersAndBackdrops  else {return [Image]()}
+        let backdrops = postersAndBackdrops.backdrops as [Image]
+        let posters = postersAndBackdrops.posters as [Image]
+        return backdrops + posters
+    }
+    
+    
     private let offset: CGFloat = 5.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.collectionView!.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return allImages?.backdrops.count ?? 0
+        return allImages.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -39,14 +45,9 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         
-        guard let imagePath = allImages?.backdrops[indexPath.section].filePath else {return UICollectionViewCell()}
-        let url = createBackdropURL(path: imagePath)
-        print(url?.absoluteString)
-//        if indexPath.section % 2 == 0 {
-//            cell.backgroundColor = UIColor.red
-//        } else {
-//            cell.backgroundColor = UIColor.blue
-//        }
+        let path = allImages[indexPath.section].filePath
+        let url = createBackdropURL(path: path)
+
         cell.imageView.kf.setImage(with: url)
         return cell
     }

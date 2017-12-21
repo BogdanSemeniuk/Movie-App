@@ -8,12 +8,16 @@
 
 import Foundation
 
+protocol Image {
+    var filePath: String {get}
+}
+
 struct Images: Decodable {
     var backdrops: [Backdrop]
     var posters: [Poster]
 }
 
-struct Backdrop: Decodable {
+struct Backdrop: Decodable, Image {
     var filePath: String
     var height: Int
     var width: Int
@@ -25,7 +29,7 @@ struct Backdrop: Decodable {
     }
 }
 
-struct Poster: Decodable {
+struct Poster: Decodable, Image {
     var filePath: String
     var height: Int
     var width: Int

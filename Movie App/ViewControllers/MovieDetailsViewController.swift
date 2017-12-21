@@ -52,7 +52,7 @@ class MovieDetailsViewController: UIViewController {
         }
         moviesManager.getMovieImages(id: movieDetails.id) { [weak self] (images) in
             let vc = self?.childViewControllers.first as! ImagesCollectionViewController
-            vc.allImages = images
+            vc.postersAndBackdrops = images
         }
     }
     

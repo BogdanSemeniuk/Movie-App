@@ -335,7 +335,7 @@
         <scene sceneID="yHz-s2-Del">
             <objects>
                 <collectionViewController id="aaa-g7-BzN" customClass="ImagesCollectionViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Fy6-cE-7hR">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="Fy6-cE-7hR">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="169"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iJy-hF-0nB">
@@ -352,7 +352,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oyz-TT-ZXO">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oyz-TT-ZXO">
                                             <rect key="frame" x="0.0" y="0.0" width="30" height="0.0"/>
                                         </imageView>
                                     </subviews>
