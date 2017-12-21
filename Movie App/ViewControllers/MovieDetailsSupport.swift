@@ -28,6 +28,13 @@ func createPosterURL(path: String) -> URL? {
     return posterPath
 }
 
+func createBackdropURL(path: String) -> URL? {
+    let url = URL(string: "http://image.tmdb.org")
+    let path = "t/p/w300/" + path
+    let backdropPath = URL(string: path, relativeTo: url!)
+    return backdropPath
+}
+
 func createBudgetString(budget: Int?) -> String {
     guard let movieBudget = budget, movieBudget != 0 else {return ""}
     return "Budget: \(movieBudget) $"
