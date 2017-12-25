@@ -4,6 +4,14 @@
       "idiom" : "universal",
       "filename" : "w256h2561386955480starfull2.png",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
