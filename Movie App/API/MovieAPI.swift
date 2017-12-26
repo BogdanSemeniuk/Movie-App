@@ -14,6 +14,7 @@ enum MovieAPI {
     case getUpcomingMovies(page: Int)
     case getMovieDetails(id: Int)
     case getAllImages(id: Int)
+    case getMovieTrailers(id: Int)
 }
 
 extension MovieAPI: TargetType {
@@ -31,6 +32,8 @@ extension MovieAPI: TargetType {
             return "movie/\(id)"
         case .getAllImages(id: let id):
             return "movie/\(id)/images"
+        case .getMovieTrailers(id: let id):
+            return "movie/\(id)/videos"
         }
     }
     
@@ -50,6 +53,8 @@ extension MovieAPI: TargetType {
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "append_to_response":"credits"], encoding: URLEncoding.queryString)
         case .getAllImages(id: _):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "include_image_language":"null,en"], encoding: URLEncoding.queryString)
+        case .getMovieTrailers(id: _):
+            return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US"], encoding: URLEncoding.queryString)
         }
     }
     

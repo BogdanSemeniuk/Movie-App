@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10A0EF211D743035C6DDF87D /* Pods_Movie_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FB34A478F95893481D52AD /* Pods_Movie_App.framework */; };
+		43227BD81FF1C47200BDD67C /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43227BD71FF1C47200BDD67C /* Videos.swift */; };
 		43593E921FF180C8009AE349 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43593E911FF180C8009AE349 /* ImagesViewController.swift */; };
 		F506C26D1FC0912100B85511 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26C1FC0912100B85511 /* Keychain.swift */; };
 		F506C26F1FC096F800B85511 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26E1FC096F800B85511 /* MoviesViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43227BD71FF1C47200BDD67C /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		43593E911FF180C8009AE349 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		688DB312004A8D6F717657B2 /* Pods-Movie App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4FB34A478F95893481D52AD /* Pods_Movie_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 			children = (
 				F50E746E1FC5E98E0041D0D5 /* PackageOfMovies.swift */,
 				F54A46C81FE9CD32008509A8 /* Images.swift */,
+				43227BD71FF1C47200BDD67C /* Videos.swift */,
 				F5427E3C1FD830F800C2C279 /* Country.swift */,
 				F50961E11FD5C08F00D33581 /* Credits.swift */,
 				F5E72C3C1FCCA927007F4F5A /* GenresList.swift */,
@@ -371,6 +374,7 @@
 				F5C623651FC9FEB3003C49AF /* Movie_App.xcdatamodeld in Sources */,
 				F5629C421FEB1B2F004B2E3E /* ImageCollectionViewCell.swift in Sources */,
 				F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */,
+				43227BD81FF1C47200BDD67C /* Videos.swift in Sources */,
 				F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */,
 				F54A46C91FE9CD33008509A8 /* Images.swift in Sources */,
 				F5F4E07B1FC1C32F00670F41 /* InternetConnection.swift in Sources */,

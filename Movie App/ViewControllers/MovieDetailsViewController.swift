@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import youtube_ios_player_helper
 
 class MovieDetailsViewController: UIViewController {
     
@@ -23,7 +24,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var ratingView: RatingView!
-
+    @IBOutlet weak var videoPlayerView: YTPlayerView!
+    @IBOutlet weak var trailerLabel: UILabel!
     
     private let moviesManager = MovieManager()
     var movieDetails: Movie!
@@ -39,6 +41,8 @@ class MovieDetailsViewController: UIViewController {
         overviewLabel.text = "Overview: " + movieDetails.overview
         budgetLabel.text = ""
         countryLabel.text = ""
+        videoPlayerView.backgroundColor = UIColor.clear
+        trailerLabel.text = ""
         
         guard let posterPath = movieDetails.posterPath else {return}
         let urlPoster = createPosterURL(path: posterPath)
@@ -54,6 +58,12 @@ class MovieDetailsViewController: UIViewController {
         moviesManager.getMovieImages(id: movieDetails.id) { [weak self] (images) in
             let vc = self?.childViewControllers.first as! ImagesViewController
             vc.postersAndBackdrops = images
+        }
+        moviesManager.getMovieVideos(id: movieDetails.id) { [weak self] (videos) in
+            if let trailer = videos.results.first {
+                self?.trailerLabel.text = "Official Trailer"
+                self?.videoPlayerView.load(withVideoId: trailer.key)
+            }
         }
     }
     

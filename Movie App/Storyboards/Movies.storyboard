@@ -161,7 +161,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="980"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKV-O3-NyU" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="999"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="786"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjf-Vb-k0U">
                                                 <rect key="frame" x="10" y="10" width="300" height="30"/>
@@ -251,17 +251,33 @@
                                                     <segue destination="fZw-p0-PNx" kind="embed" id="eos-hf-Iak"/>
                                                 </connections>
                                             </containerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trailer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTR-Hz-Uyk">
+                                                <rect key="frame" x="10" y="535" width="300" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mjd-TY-I42" customClass="YTPlayerView">
+                                                <rect key="frame" x="10" y="566" width="300" height="200"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Mjd-TY-I42" secondAttribute="height" multiplier="3:2" id="lEZ-ys-BM2"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="yTR-Hz-Uyk" firstAttribute="top" secondItem="KhE-Bp-mfT" secondAttribute="bottom" constant="20" id="0eq-52-rBc"/>
+                                            <constraint firstItem="yTR-Hz-Uyk" firstAttribute="leading" secondItem="VKV-O3-NyU" secondAttribute="leading" constant="10" id="3M3-Pm-6du"/>
                                             <constraint firstItem="LAz-1Z-qP7" firstAttribute="leading" secondItem="kzH-52-inM" secondAttribute="leading" id="4NT-Bm-T4h"/>
                                             <constraint firstItem="9vl-79-JXH" firstAttribute="leading" secondItem="k0k-Bo-12h" secondAttribute="leading" id="50K-bv-61X"/>
                                             <constraint firstItem="9mp-f3-Zz4" firstAttribute="leading" secondItem="9vl-79-JXH" secondAttribute="leading" id="5Xy-PG-QDi"/>
+                                            <constraint firstAttribute="bottom" secondItem="Mjd-TY-I42" secondAttribute="bottom" constant="20" id="73S-W0-wlF"/>
                                             <constraint firstItem="9mp-f3-Zz4" firstAttribute="top" secondItem="9vl-79-JXH" secondAttribute="bottom" constant="10" id="7cX-8M-NSS"/>
-                                            <constraint firstAttribute="bottom" secondItem="KhE-Bp-mfT" secondAttribute="bottom" constant="484" id="7pI-y0-h5M"/>
                                             <constraint firstItem="Rjf-Vb-k0U" firstAttribute="leading" secondItem="VKV-O3-NyU" secondAttribute="leading" constant="10" id="9BB-6S-P73"/>
                                             <constraint firstAttribute="trailing" secondItem="VCj-6Z-ZeE" secondAttribute="trailing" constant="10" id="AAT-E6-0Rr"/>
                                             <constraint firstAttribute="trailing" secondItem="9mp-f3-Zz4" secondAttribute="trailing" constant="10" id="ASg-74-fv8"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mjd-TY-I42" secondAttribute="trailing" constant="10" id="AW5-Lv-jms"/>
                                             <constraint firstAttribute="trailing" secondItem="LAz-1Z-qP7" secondAttribute="trailing" constant="10" id="CCo-Cc-R9O"/>
                                             <constraint firstItem="VCj-6Z-ZeE" firstAttribute="leading" secondItem="LAz-1Z-qP7" secondAttribute="leading" id="CX0-is-Zd8"/>
                                             <constraint firstItem="aHi-9Y-J4b" firstAttribute="leading" secondItem="VCj-6Z-ZeE" secondAttribute="leading" id="CiO-rF-99I"/>
@@ -284,6 +300,8 @@
                                             <constraint firstItem="Rjf-Vb-k0U" firstAttribute="top" secondItem="VKV-O3-NyU" secondAttribute="top" constant="10" id="eIS-FA-aUH"/>
                                             <constraint firstAttribute="trailing" secondItem="k0k-Bo-12h" secondAttribute="trailing" constant="10" id="lgY-EC-pLN"/>
                                             <constraint firstItem="k0k-Bo-12h" firstAttribute="leading" secondItem="b64-6K-r3T" secondAttribute="leading" id="lid-Up-VG9"/>
+                                            <constraint firstAttribute="trailing" secondItem="yTR-Hz-Uyk" secondAttribute="trailing" constant="10" id="m5u-Rh-Cv8"/>
+                                            <constraint firstItem="Mjd-TY-I42" firstAttribute="top" secondItem="yTR-Hz-Uyk" secondAttribute="bottom" constant="10" id="mHY-Eq-C3F"/>
                                             <constraint firstItem="9vl-79-JXH" firstAttribute="top" secondItem="k0k-Bo-12h" secondAttribute="bottom" constant="10" id="mWx-nz-Sva"/>
                                             <constraint firstItem="KhE-Bp-mfT" firstAttribute="top" secondItem="waM-My-JtL" secondAttribute="bottom" constant="10" id="q8K-Bg-JOr"/>
                                             <constraint firstItem="KhE-Bp-mfT" firstAttribute="leading" secondItem="VKV-O3-NyU" secondAttribute="leading" constant="10" id="rv5-oK-A6U"/>
@@ -291,6 +309,7 @@
                                             <constraint firstItem="kzH-52-inM" firstAttribute="leading" secondItem="b64-6K-r3T" secondAttribute="trailing" constant="10" id="uQd-Qo-c8g"/>
                                             <constraint firstAttribute="trailing" secondItem="kzH-52-inM" secondAttribute="trailing" constant="10" id="wXT-e8-aa6"/>
                                             <constraint firstItem="7Jq-Pf-BvK" firstAttribute="leading" secondItem="aHi-9Y-J4b" secondAttribute="leading" id="x88-UV-SVH"/>
+                                            <constraint firstItem="Mjd-TY-I42" firstAttribute="leading" secondItem="VKV-O3-NyU" secondAttribute="leading" constant="10" id="xXd-Mj-To2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -325,6 +344,8 @@
                         <outlet property="ratingView" destination="7Jq-Pf-BvK" id="jeQ-Oe-q2e"/>
                         <outlet property="releaseLabel" destination="kzH-52-inM" id="uXP-Ai-jAB"/>
                         <outlet property="titleLabel" destination="Rjf-Vb-k0U" id="vjf-uy-cXy"/>
+                        <outlet property="trailerLabel" destination="yTR-Hz-Uyk" id="qfa-k9-51v"/>
+                        <outlet property="videoPlayerView" destination="Mjd-TY-I42" id="TD9-bL-6px"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZeG-n1-vB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
