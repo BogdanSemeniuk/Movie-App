@@ -63,6 +63,9 @@ class MovieDetailsViewController: UIViewController {
             if let trailer = videos.results.first {
                 self?.trailerLabel.text = "Official Trailer"
                 self?.videoPlayerView.load(withVideoId: trailer.key)
+            } else {
+                self?.trailerLabel.isHidden = false
+                self?.videoPlayerView.isHidden = false
             }
         }
     }

@@ -23,14 +23,17 @@ class ImagesViewController: UIViewController, UICollectionViewDelegateFlowLayout
     var postersAndBackdrops: Images? {
         didSet {
             imagesCollectionView?.reloadData()
-            
         }
     }
     var allImages: [Image] {
         guard let postersAndBackdrops = postersAndBackdrops  else {return [Image]()}
         let backdrops = postersAndBackdrops.backdrops as [Image]
         let posters = postersAndBackdrops.posters as [Image]
-        return backdrops + posters
+        let images = backdrops + posters
+        if images.count == 1 {
+            rightArrowImageView.alpha = 0.0
+        }
+        return images
     }
     
     override func viewDidLoad() {
@@ -39,7 +42,6 @@ class ImagesViewController: UIViewController, UICollectionViewDelegateFlowLayout
         leftArrowImageView.backgroundColor = UIColor.clear
         rightArrowImageView.backgroundColor = UIColor.clear
         leftArrowImageView.alpha = 0.0
-        
     }
     
     // MARK: - UICollectionView
