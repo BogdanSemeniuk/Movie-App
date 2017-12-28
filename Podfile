@@ -10,5 +10,6 @@ pod 'Moya', '~> 10.0'
 pod 'KeychainSwift', '~> 10.0'
 pod 'Kingfisher', '~> 4.3'
 pod 'youtube-ios-player-helper', '~> 0.1'
+pod 'GuillotineMenu', '~> 3.0'
 
 end
