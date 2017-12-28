@@ -64,8 +64,8 @@ class MovieDetailsViewController: UIViewController {
                 self?.trailerLabel.text = "Official Trailer"
                 self?.videoPlayerView.load(withVideoId: trailer.key)
             } else {
-                self?.trailerLabel.isHidden = false
-                self?.videoPlayerView.isHidden = false
+                self?.trailerLabel.isHidden = true
+                self?.videoPlayerView.isHidden = true
             }
         }
     }
