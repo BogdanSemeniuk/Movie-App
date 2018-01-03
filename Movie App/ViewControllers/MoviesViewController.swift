@@ -9,6 +9,13 @@
 import UIKit
 import Kingfisher
 
+enum MovieSort {
+    case upcoming
+    case popular
+    case topRated
+    case nowPlaying
+}
+
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Outlets
@@ -22,6 +29,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private var moviesContent = [Movie]()
     private var currentPage = 1
     private var responseFetchedUp = false
+    var kindOfMovies: MovieSort = .upcoming
     
     // MARK: - Life Cycl
     
@@ -91,13 +99,26 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     private func getMovies() {
-        moviesManager.getUpcomingMovies(page: currentPage, complition: { [unowned self] movies in
-            if let result = movies.results {
-                self.moviesContent+=result
-                self.reloadTableView()
-                self.currentPage+=1
-                self.responseFetchedUp = true
-            }
-        })
+        switch kindOfMovies {
+        case .upcoming:
+            moviesManager.getUpcomingMovies(page: currentPage, complition: { [unowned self] movies in
+                self.changeCurrentPageAndUpdateContent(movies: movies)
+            })
+        case .popular:
+            moviesManager.getPopularMovies(page: currentPage, complition: { [unowned self] movies in
+                    self.changeCurrentPageAndUpdateContent(movies: movies)
+                })
+        default:
+            break
+        }
+    }
+    
+    func changeCurrentPageAndUpdateContent(movies: PackageOfMovies) {
+        if let result = movies.results {
+            self.moviesContent+=result
+            self.reloadTableView()
+            self.currentPage+=1
+            self.responseFetchedUp = true
+        }
     }
 }

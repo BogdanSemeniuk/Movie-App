@@ -11,37 +11,37 @@ import SideMenu
 
 class HomeViewController: UIViewController {
     
-//    lazy var upcomingNC: UINavigationController = UINavigationController()
-//    lazy var favouritesNC: UINavigationController = UINavigationController()
-    lazy var upcomingVC: MoviesViewController = MoviesViewController()
+    lazy var upcomingVC: MoviesViewController = {
+        return createMovieVC(kindOfMovie: .upcoming)
+    }()
+    lazy var popularVC: MoviesViewController = {
+        return createMovieVC(kindOfMovie: .popular)
+    }()
+    lazy var topRatedVC: MoviesViewController = {
+        return createMovieVC(kindOfMovie: .topRated)
+    }()
+    lazy var nowPlayingVC: MoviesViewController = {
+        return createMovieVC(kindOfMovie: .nowPlaying)
+    }()
+    let nc = UINavigationController()
+    
+    var selectedMenuItem: MenuItem = .upcoming {
+        didSet {
+            switch selectedMenuItem {
+            case .popular:
+                setContent(vc: popularVC)
+            case .upcoming:
+                setContent(vc: upcomingVC)
+            default:
+                break
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nc = UINavigationController()
-        
-        
-        
-        upcomingVC = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "MoviesVC") as! MoviesViewController
-        nc.viewControllers.append(upcomingVC)
-        createMenuButton(viewController: upcomingVC)
-        embed(viewController: nc, in: view)
-        
-        
-        
-//        addChildViewController(upcomingNC)
-//        view.addSubview(upcomingNC.view)
-//        upcomingNC.view.frame = view.bounds
-//        upcomingNC.didMove(toParentViewController: self)
-        
-//        remove(viewController: upcomingNC)
-        
-//        upcomingNC.willMove(toParentViewController: nil)
-//        upcomingNC.view.removeFromSuperview()
-//        upcomingNC.removeFromParentViewController()
-//
-//        addChildViewController(favouritesNC)
-//        remove(viewController: favouritesNC)
+        setContent(vc: upcomingVC)
     }
     
     func createMenuButton(viewController: UIViewController) {
@@ -54,17 +54,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func menuTouched() {
-        let menuTableVC = MenuTableViewController()
-        menuTableVC.complition = { selectedItem in
-            print(selectedItem)
-        }
-        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: menuTableVC)
-        menuLeftNavigationController.navigationBar.barTintColor = UIColor.blue
-        
-        
-        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
-        menuCustomization()
-
+        createMenu()
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
     
@@ -74,6 +64,37 @@ class HomeViewController: UIViewController {
         SideMenuManager.defaultManager.menuShadowOpacity = 0.9
         SideMenuManager.defaultManager.menuShadowRadius = 10
         SideMenuManager.defaultManager.menuAnimationBackgroundColor = UIColor(patternImage: UIImage(named: "Background1")!)
+    }
+    
+    func createMovieVC(kindOfMovie: MovieSort) -> MoviesViewController{
+        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "MoviesVC") as! MoviesViewController
+        vc.kindOfMovies = kindOfMovie
+        return vc
+    }
+    
+    func createMenu() {
+        let menuTableVC = MenuTableViewController()
+        menuTableVC.complition = {[unowned self] selectedItem in
+            if self.selectedMenuItem != selectedItem {
+                self.removeFromContent()
+                self.selectedMenuItem = selectedItem
+            }
+        }
+        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: menuTableVC)
+        menuLeftNavigationController.navigationBar.barTintColor = UIColor.blue
         
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        menuCustomization()
+    }
+    
+    func removeFromContent() {
+        remove(viewController: nc)
+    }
+    
+    func setContent(vc: MoviesViewController) {
+        nc.viewControllers.removeAll()
+        nc.viewControllers.append(vc)
+        createMenuButton(viewController: vc)
+        embed(viewController: nc, in: view)
     }
 }
