@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let loginManager = LoginManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // TODO : - Remove it
         Keychain.sharedStorage.clear()
         let storyboardName = loginManager.isLogined ? "Movies" : "Login"

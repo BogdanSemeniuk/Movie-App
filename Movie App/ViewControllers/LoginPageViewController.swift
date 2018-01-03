@@ -51,7 +51,9 @@ class LoginPageViewController: UIViewController {
     }
     
     private func goToMoviesVC() {
-        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "NavigationMovies")
-        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = vc
+//        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "NavigationMovies")
+//        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = vc
+        let homeVC = HomeViewController()
+        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = homeVC
     }
 }

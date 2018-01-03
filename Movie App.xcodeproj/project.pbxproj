@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		10A0EF211D743035C6DDF87D /* Pods_Movie_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FB34A478F95893481D52AD /* Pods_Movie_App.framework */; };
 		43227BD81FF1C47200BDD67C /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43227BD71FF1C47200BDD67C /* Videos.swift */; };
+		4322A84F1FF79DF30066533D /* UIViewController+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4322A84E1FF79DF30066533D /* UIViewController+Embed.swift */; };
+		4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4322A8501FF79EB60066533D /* UIView+Embed.swift */; };
+		434B7C2C1FFC1AF900038A11 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434B7C2B1FFC1AF900038A11 /* Menu.storyboard */; };
+		434B7C2E1FFC1D8200038A11 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */; };
 		43593E921FF180C8009AE349 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43593E911FF180C8009AE349 /* ImagesViewController.swift */; };
+		436364071FF6BB9000D8326F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436364061FF6BB9000D8326F /* HomeViewController.swift */; };
 		F506C26D1FC0912100B85511 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26C1FC0912100B85511 /* Keychain.swift */; };
 		F506C26F1FC096F800B85511 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26E1FC096F800B85511 /* MoviesViewController.swift */; };
 		F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C2701FC0A84300B85511 /* LoginPageViewController.swift */; };
@@ -44,7 +49,12 @@
 
 /* Begin PBXFileReference section */
 		43227BD71FF1C47200BDD67C /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
+		4322A84E1FF79DF30066533D /* UIViewController+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Embed.swift"; sourceTree = "<group>"; };
+		4322A8501FF79EB60066533D /* UIView+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Embed.swift"; sourceTree = "<group>"; };
+		434B7C2B1FFC1AF900038A11 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		43593E911FF180C8009AE349 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		436364061FF6BB9000D8326F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		688DB312004A8D6F717657B2 /* Pods-Movie App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4FB34A478F95893481D52AD /* Pods_Movie_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABB67D9B42D385E39EC901E /* Pods-Movie App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,7 +163,9 @@
 				F541B0411FDDE717002F98D8 /* MovieDetailsSupport.swift */,
 				F5C451051FC7545D0087F13E /* MovieCell.swift */,
 				F5099C8F1FDEDCA000A0E963 /* RatingView.swift */,
+				436364061FF6BB9000D8326F /* HomeViewController.swift */,
 				43593E911FF180C8009AE349 /* ImagesViewController.swift */,
+				434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */,
 				F5629C411FEB1B2F004B2E3E /* ImageCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
@@ -164,6 +176,7 @@
 			children = (
 				F59A8B0D1FB9FB5D002A689E /* Login.storyboard */,
 				F5F4E07C1FC20C7900670F41 /* Movies.storyboard */,
+				434B7C2B1FFC1AF900038A11 /* Menu.storyboard */,
 				F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -191,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				F59A8B091FB9FB5D002A689E /* AppDelegate.swift */,
+				4322A84E1FF79DF30066533D /* UIViewController+Embed.swift */,
+				4322A8501FF79EB60066533D /* UIView+Embed.swift */,
 				F50E74711FC601D80041D0D5 /* Managers */,
 				F50E74701FC601A70041D0D5 /* API */,
 				F50E74721FC601FB0041D0D5 /* ViewControllers */,
@@ -279,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				434B7C2C1FFC1AF900038A11 /* Menu.storyboard in Resources */,
 				F59A8B141FB9FB5D002A689E /* LaunchScreen.storyboard in Resources */,
 				F59A8B111FB9FB5D002A689E /* Assets.xcassets in Resources */,
 				F59A8B0F1FB9FB5D002A689E /* Login.storyboard in Resources */,
@@ -312,21 +328,21 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Movie App/Pods-Movie App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/GuillotineMenu/GuillotineMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GuillotineMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,18 +380,22 @@
 				F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */,
 				F5099C901FDEDCA000A0E963 /* RatingView.swift in Sources */,
 				F541B0421FDDE717002F98D8 /* MovieDetailsSupport.swift in Sources */,
+				436364071FF6BB9000D8326F /* HomeViewController.swift in Sources */,
 				F50E746F1FC5E98E0041D0D5 /* PackageOfMovies.swift in Sources */,
 				F50961DF1FD5B2F200D33581 /* MovieDetailsViewController.swift in Sources */,
 				F50961E21FD5C08F00D33581 /* Credits.swift in Sources */,
 				F5E72C3D1FCCA927007F4F5A /* GenresList.swift in Sources */,
 				F55447231FD425AD004900F5 /* GenreObj+CoreDataProperties.swift in Sources */,
 				F5E72C3F1FCCAA12007F4F5A /* GenreAPI.swift in Sources */,
+				4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */,
+				4322A84F1FF79DF30066533D /* UIViewController+Embed.swift in Sources */,
 				F5427E3D1FD830F800C2C279 /* Country.swift in Sources */,
 				F515533E1FCDEEE700D96A24 /* CoreDataManager.swift in Sources */,
 				F512F0591FC4940A00AED8A7 /* MovieManager.swift in Sources */,
 				F5C623651FC9FEB3003C49AF /* Movie_App.xcdatamodeld in Sources */,
 				F5629C421FEB1B2F004B2E3E /* ImageCollectionViewCell.swift in Sources */,
 				F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */,
+				434B7C2E1FFC1D8200038A11 /* MenuTableViewController.swift in Sources */,
 				43227BD81FF1C47200BDD67C /* Videos.swift in Sources */,
 				F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */,
 				F54A46C91FE9CD33008509A8 /* Images.swift in Sources */,
