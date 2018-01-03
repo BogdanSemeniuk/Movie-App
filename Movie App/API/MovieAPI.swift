@@ -12,6 +12,8 @@ import Moya
 enum MovieAPI {
     case getPopularMovies(page: Int)
     case getUpcomingMovies(page: Int)
+    case getTopRatedMovies(page: Int)
+    case getNowPlayingMovies(page: Int)
     case getMovieDetails(id: Int)
     case getAllImages(id: Int)
     case getMovieTrailers(id: Int)
@@ -19,21 +21,25 @@ enum MovieAPI {
 
 extension MovieAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "https://api.themoviedb.org/3")!
+        return URL(string: "https://api.themoviedb.org/3/movie")!
     }
     
     var path: String {
         switch self {
         case .getPopularMovies(page: _):
-            return "movie/popular"
+            return "popular"
         case .getUpcomingMovies(page: _):
-            return "movie/upcoming"
+            return "upcoming"
+        case .getTopRatedMovies(page: _):
+            return "top_rated"
+        case .getNowPlayingMovies(page: _):
+            return "now_playing"
         case .getMovieDetails(id: let id):
-            return "movie/\(id)"
+            return "\(id)"
         case .getAllImages(id: let id):
-            return "movie/\(id)/images"
+            return "\(id)/images"
         case .getMovieTrailers(id: let id):
-            return "movie/\(id)/videos"
+            return "\(id)/videos"
         }
     }
     
@@ -47,7 +53,7 @@ extension MovieAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .getPopularMovies(page: let page), .getUpcomingMovies(page: let page):
+        case .getPopularMovies(page: let page), .getUpcomingMovies(page: let page), .getTopRatedMovies(page: let page), .getNowPlayingMovies(page: let page):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "page":page, "region":"UA"], encoding: URLEncoding.queryString)
         case .getMovieDetails(id:_):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "append_to_response":"credits"], encoding: URLEncoding.queryString)

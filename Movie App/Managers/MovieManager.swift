@@ -46,6 +46,40 @@ class MovieManager {
         }
     }
     
+    func getTopRatedMovies(page: Int, complition: @escaping (PackageOfMovies) -> ()) {
+        provider.request(.getTopRatedMovies(page: page)) { (result) in
+            switch result {
+            case let .success(moyaResponse):
+                let responseData = moyaResponse.data
+                do {
+                    let moviesPackage = try JSONDecoder().decode(PackageOfMovies.self, from: responseData)
+                    complition(moviesPackage)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error.errorDescription ?? "Unknown error")
+            }
+        }
+    }
+    
+    func getNowPlayingMovies(page: Int, complition: @escaping (PackageOfMovies) -> ()) {
+        provider.request(.getNowPlayingMovies(page: page)) { (result) in
+            switch result {
+            case let .success(moyaResponse):
+                let responseData = moyaResponse.data
+                do {
+                    let moviesPackage = try JSONDecoder().decode(PackageOfMovies.self, from: responseData)
+                    complition(moviesPackage)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error.errorDescription ?? "Unknown error")
+            }
+        }
+    }
+    
     func getMovieDetails(id: Int, complition:@escaping (Movie) -> ()) {
         provider.request(.getMovieDetails(id: id)) { (result) in
             switch result {

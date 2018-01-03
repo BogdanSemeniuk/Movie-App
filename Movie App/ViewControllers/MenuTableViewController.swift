@@ -49,7 +49,7 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
         cell.backgroundColor = UIColor.clear
         
-        let attributs = [NSAttributedStringKey.font : UIFont(name: "AmericanTypewriter-CondensedBold", size: 30.0)]
+        let attributs = [NSAttributedStringKey.font : UIFont(name: "AmericanTypewriter-CondensedBold", size: 30.0) as Any]
         let attributedStr = NSMutableAttributedString(string: content[indexPath.row], attributes: attributs)
         
         cell.textLabel?.attributedText = attributedStr

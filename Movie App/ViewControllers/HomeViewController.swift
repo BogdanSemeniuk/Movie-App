@@ -11,19 +11,19 @@ import SideMenu
 
 class HomeViewController: UIViewController {
     
-    lazy var upcomingVC: MoviesViewController = {
+    private lazy var upcomingVC: MoviesViewController = {
         return createMovieVC(kindOfMovie: .upcoming)
     }()
-    lazy var popularVC: MoviesViewController = {
+    private lazy var popularVC: MoviesViewController = {
         return createMovieVC(kindOfMovie: .popular)
     }()
-    lazy var topRatedVC: MoviesViewController = {
+    private lazy var topRatedVC: MoviesViewController = {
         return createMovieVC(kindOfMovie: .topRated)
     }()
-    lazy var nowPlayingVC: MoviesViewController = {
+    private lazy var nowPlayingVC: MoviesViewController = {
         return createMovieVC(kindOfMovie: .nowPlaying)
     }()
-    let nc = UINavigationController()
+    private let nc = UINavigationController()
     
     var selectedMenuItem: MenuItem = .upcoming {
         didSet {
@@ -32,6 +32,10 @@ class HomeViewController: UIViewController {
                 setContent(vc: popularVC)
             case .upcoming:
                 setContent(vc: upcomingVC)
+            case .topRated:
+                setContent(vc: topRatedVC)
+            case .nowPlaying:
+                setContent(vc: nowPlayingVC)
             default:
                 break
             }

@@ -36,6 +36,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationTitile()
         genresManager.updateIfNeeded()
         getMovies()
     }
@@ -108,8 +109,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             moviesManager.getPopularMovies(page: currentPage, complition: { [unowned self] movies in
                     self.changeCurrentPageAndUpdateContent(movies: movies)
                 })
-        default:
-            break
+        case .topRated:
+            moviesManager.getTopRatedMovies(page: currentPage, complition: { [unowned self] movies in
+                self.changeCurrentPageAndUpdateContent(movies: movies)
+            })
+        case .nowPlaying:
+            moviesManager.getNowPlayingMovies(page: currentPage, complition: { [unowned self] movies in
+                self.changeCurrentPageAndUpdateContent(movies: movies)
+            })
         }
     }
     
@@ -119,6 +126,19 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.reloadTableView()
             self.currentPage+=1
             self.responseFetchedUp = true
+        }
+    }
+    
+    func setNavigationTitile() {
+        switch kindOfMovies {
+        case .nowPlaying:
+            navigationItem.title = "Now Playing Movies"
+        case .upcoming:
+            navigationItem.title = "Upcoming Movies"
+        case .topRated:
+            navigationItem.title = "Top Rated Movies"
+        case .popular:
+            navigationItem.title = "Popular Movies"
         }
     }
 }
