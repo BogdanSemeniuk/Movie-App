@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // TODO : - Remove it
         Keychain.sharedStorage.clear()
+        
         let storyboardName = loginManager.isLogined ? "Movies" : "Login"
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         let identifierVC = loginManager.isLogined ? "Movies" : "Login"
@@ -31,7 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Token received"), object: nil)
+        if (window?.rootViewController as? HomeViewController) == nil {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Token received to login page"), object: nil)
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Token received to HomeVC"), object: nil)
+        }
         return true
     }
 }

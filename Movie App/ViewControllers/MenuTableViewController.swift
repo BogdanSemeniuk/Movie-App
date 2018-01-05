@@ -27,11 +27,10 @@ class MenuTableViewController: UITableViewController {
     private let menuGuest = ["Upcoming", "Popular", "Top Rated", "Now Playing", "Search", "Login"]
     
     var complition: ((MenuItem)->())?
-    var selectedItem: MenuItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.isNavigationBarHidden = true
         tableView.backgroundColor = UIColor.clear
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MenuCell")
@@ -48,16 +47,13 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
         cell.backgroundColor = UIColor.clear
-        
-        let attributs = [NSAttributedStringKey.font : UIFont(name: "AmericanTypewriter-CondensedBold", size: 30.0) as Any]
-        let attributedStr = NSMutableAttributedString(string: content[indexPath.row], attributes: attributs)
-        
-        cell.textLabel?.attributedText = attributedStr
-        
+        cell.textLabel?.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 30.0)
+        cell.textLabel?.text = content[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem: MenuItem
         switch indexPath.row {
         case 0:
             selectedItem = MenuItem.upcoming
@@ -74,10 +70,11 @@ class MenuTableViewController: UITableViewController {
         case 6:
             selectedItem = MenuItem.logout
         default:
-            break
+            return
         }
-        complition?(selectedItem!)
-        dismiss(animated: true, completion: nil)
+        
+        //dismiss(animated: true, completion: nil)
+        complition?(selectedItem)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

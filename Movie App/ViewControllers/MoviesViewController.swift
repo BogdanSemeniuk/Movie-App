@@ -141,4 +141,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             navigationItem.title = "Popular Movies"
         }
     }
+    
+    static func create(kindOfMovie: MovieSort) -> MoviesViewController {
+        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "MoviesVC") as! MoviesViewController
+        vc.kindOfMovies = kindOfMovie
+        return vc
+    }
 }

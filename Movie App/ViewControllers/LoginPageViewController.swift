@@ -19,7 +19,7 @@ class LoginPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginPageViewController.getSessionIdAndGoToMovies), name: NSNotification.Name(rawValue: "Token received"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginPageViewController.getSessionIdAndGoToMovies), name: NSNotification.Name(rawValue: "Token received to login page"), object: nil)
     }
     
     deinit {
@@ -51,8 +51,6 @@ class LoginPageViewController: UIViewController {
     }
     
     private func goToMoviesVC() {
-//        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "NavigationMovies")
-//        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = vc
         let homeVC = HomeViewController()
         (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = homeVC
     }

@@ -12,18 +12,19 @@ import SideMenu
 class HomeViewController: UIViewController {
     
     private lazy var upcomingVC: MoviesViewController = {
-        return createMovieVC(kindOfMovie: .upcoming)
+        return MoviesViewController.create(kindOfMovie: .upcoming)
     }()
     private lazy var popularVC: MoviesViewController = {
-        return createMovieVC(kindOfMovie: .popular)
+        return MoviesViewController.create(kindOfMovie: .popular)
     }()
     private lazy var topRatedVC: MoviesViewController = {
-        return createMovieVC(kindOfMovie: .topRated)
+        return MoviesViewController.create(kindOfMovie: .topRated)
     }()
     private lazy var nowPlayingVC: MoviesViewController = {
-        return createMovieVC(kindOfMovie: .nowPlaying)
+        return MoviesViewController.create(kindOfMovie: .nowPlaying)
     }()
     private let nc = UINavigationController()
+    private let loginManager = LoginManager()
     
     var selectedMenuItem: MenuItem = .upcoming {
         didSet {
@@ -36,16 +37,26 @@ class HomeViewController: UIViewController {
                 setContent(vc: topRatedVC)
             case .nowPlaying:
                 setContent(vc: nowPlayingVC)
+            case .login:
+                loginManager.getTokenAndRedirectToApp()
             default:
                 break
             }
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        print("deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.getSessionId), name: NSNotification.Name("Token received to HomeVC"), object: nil)
+        
         setContent(vc: upcomingVC)
+        createMenu()
     }
     
     func createMenuButton(viewController: UIViewController) {
@@ -58,7 +69,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func menuTouched() {
-        createMenu()
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
     
@@ -70,12 +80,6 @@ class HomeViewController: UIViewController {
         SideMenuManager.defaultManager.menuAnimationBackgroundColor = UIColor(patternImage: UIImage(named: "Background1")!)
     }
     
-    func createMovieVC(kindOfMovie: MovieSort) -> MoviesViewController{
-        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "MoviesVC") as! MoviesViewController
-        vc.kindOfMovies = kindOfMovie
-        return vc
-    }
-    
     func createMenu() {
         let menuTableVC = MenuTableViewController()
         menuTableVC.complition = {[unowned self] selectedItem in
@@ -85,7 +89,6 @@ class HomeViewController: UIViewController {
             }
         }
         let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: menuTableVC)
-        menuLeftNavigationController.navigationBar.barTintColor = UIColor.blue
         
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         menuCustomization()
@@ -100,5 +103,9 @@ class HomeViewController: UIViewController {
         nc.viewControllers.append(vc)
         createMenuButton(viewController: vc)
         embed(viewController: nc, in: view)
+    }
+    
+    @objc func getSessionId() {
+        print("")
     }
 }
