@@ -30,12 +30,21 @@ class MenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.isNavigationBarHidden = true
         tableView.backgroundColor = UIColor.clear
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MenuCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         content = loginManager.isLogined ? menuUser : menuGuest
+        
+        if tableView.numberOfRows(inSection: 0) != content.count {
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Table view
@@ -72,9 +81,8 @@ class MenuTableViewController: UITableViewController {
         default:
             return
         }
-        
-        //dismiss(animated: true, completion: nil)
         complition?(selectedItem)
+        dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

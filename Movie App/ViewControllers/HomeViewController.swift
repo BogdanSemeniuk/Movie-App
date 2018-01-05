@@ -37,8 +37,6 @@ class HomeViewController: UIViewController {
                 setContent(vc: topRatedVC)
             case .nowPlaying:
                 setContent(vc: nowPlayingVC)
-            case .login:
-                loginManager.getTokenAndRedirectToApp()
             default:
                 break
             }
@@ -84,8 +82,17 @@ class HomeViewController: UIViewController {
         let menuTableVC = MenuTableViewController()
         menuTableVC.complition = {[unowned self] selectedItem in
             if self.selectedMenuItem != selectedItem {
-                self.removeFromContent()
-                self.selectedMenuItem = selectedItem
+                switch selectedItem {
+                case .topRated, .nowPlaying, .popular, .upcoming:
+                    self.removeFromContent()
+                    self.selectedMenuItem = selectedItem
+                case .login:
+                    self.loginManager.getTokenAndRedirectToApp()
+                case .logout:
+                    Keychain.sharedStorage.clear()
+                default:
+                    break
+                }
             }
         }
         let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: menuTableVC)
@@ -106,6 +113,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func getSessionId() {
-        print("")
+        loginManager.getSessionId {
+        }
     }
 }

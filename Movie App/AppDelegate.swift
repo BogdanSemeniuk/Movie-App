@@ -17,13 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // TODO : - Remove it
-        Keychain.sharedStorage.clear()
+        var initialVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login")
         
-        let storyboardName = loginManager.isLogined ? "Movies" : "Login"
-        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let identifierVC = loginManager.isLogined ? "Movies" : "Login"
-        let initialVC = storyboard.instantiateViewController(withIdentifier: identifierVC)
+        if loginManager.isLogined {
+            initialVC = HomeViewController()
+        }
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialVC
         self.window?.makeKeyAndVisible()
