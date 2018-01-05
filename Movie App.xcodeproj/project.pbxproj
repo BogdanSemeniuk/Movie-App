@@ -11,6 +11,7 @@
 		43227BD81FF1C47200BDD67C /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43227BD71FF1C47200BDD67C /* Videos.swift */; };
 		4322A84F1FF79DF30066533D /* UIViewController+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4322A84E1FF79DF30066533D /* UIViewController+Embed.swift */; };
 		4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4322A8501FF79EB60066533D /* UIView+Embed.swift */; };
+		4322B35720002C640032BC3A /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4322B35620002C640032BC3A /* Watchlist.storyboard */; };
 		434B7C2C1FFC1AF900038A11 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434B7C2B1FFC1AF900038A11 /* Menu.storyboard */; };
 		434B7C2E1FFC1D8200038A11 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */; };
 		43593E921FF180C8009AE349 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43593E911FF180C8009AE349 /* ImagesViewController.swift */; };
@@ -51,6 +52,7 @@
 		43227BD71FF1C47200BDD67C /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		4322A84E1FF79DF30066533D /* UIViewController+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Embed.swift"; sourceTree = "<group>"; };
 		4322A8501FF79EB60066533D /* UIView+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Embed.swift"; sourceTree = "<group>"; };
+		4322B35620002C640032BC3A /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
 		434B7C2B1FFC1AF900038A11 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		43593E911FF180C8009AE349 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				F59A8B0D1FB9FB5D002A689E /* Login.storyboard */,
 				F5F4E07C1FC20C7900670F41 /* Movies.storyboard */,
 				434B7C2B1FFC1AF900038A11 /* Menu.storyboard */,
+				4322B35620002C640032BC3A /* Watchlist.storyboard */,
 				F59A8B121FB9FB5D002A689E /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -296,6 +299,7 @@
 			files = (
 				434B7C2C1FFC1AF900038A11 /* Menu.storyboard in Resources */,
 				F59A8B141FB9FB5D002A689E /* LaunchScreen.storyboard in Resources */,
+				4322B35720002C640032BC3A /* Watchlist.storyboard in Resources */,
 				F59A8B111FB9FB5D002A689E /* Assets.xcassets in Resources */,
 				F59A8B0F1FB9FB5D002A689E /* Login.storyboard in Resources */,
 				F5F4E07D1FC20C7900670F41 /* Movies.storyboard in Resources */,

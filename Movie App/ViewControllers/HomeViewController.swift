@@ -52,7 +52,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.getSessionId), name: NSNotification.Name("Token received to HomeVC"), object: nil)
-        
         setContent(vc: upcomingVC)
         createMenu()
     }
