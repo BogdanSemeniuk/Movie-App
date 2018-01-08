@@ -16,6 +16,8 @@
 		434B7C2E1FFC1D8200038A11 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */; };
 		43593E921FF180C8009AE349 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43593E911FF180C8009AE349 /* ImagesViewController.swift */; };
 		436364071FF6BB9000D8326F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436364061FF6BB9000D8326F /* HomeViewController.swift */; };
+		43A27F442003BF5D00F7B95A /* WatchlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F432003BF5D00F7B95A /* WatchlistManager.swift */; };
+		43A27F462003C04800F7B95A /* WatchlistAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F452003C04800F7B95A /* WatchlistAPI.swift */; };
 		F506C26D1FC0912100B85511 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26C1FC0912100B85511 /* Keychain.swift */; };
 		F506C26F1FC096F800B85511 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26E1FC096F800B85511 /* MoviesViewController.swift */; };
 		F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C2701FC0A84300B85511 /* LoginPageViewController.swift */; };
@@ -57,6 +59,8 @@
 		434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		43593E911FF180C8009AE349 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		436364061FF6BB9000D8326F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		43A27F432003BF5D00F7B95A /* WatchlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistManager.swift; sourceTree = "<group>"; };
+		43A27F452003C04800F7B95A /* WatchlistAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAPI.swift; sourceTree = "<group>"; };
 		688DB312004A8D6F717657B2 /* Pods-Movie App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4FB34A478F95893481D52AD /* Pods_Movie_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABB67D9B42D385E39EC901E /* Pods-Movie App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F5E01A4F1FBB544400A4413F /* LoginAPI.swift */,
+				43A27F452003C04800F7B95A /* WatchlistAPI.swift */,
 				F512F0561FC4859B00AED8A7 /* MovieAPI.swift */,
 				F5E72C3E1FCCAA12007F4F5A /* GenreAPI.swift */,
 			);
@@ -151,6 +156,7 @@
 			children = (
 				F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */,
 				F512F0581FC4940A00AED8A7 /* MovieManager.swift */,
+				43A27F432003BF5D00F7B95A /* WatchlistManager.swift */,
 				F51552FE1FCDCC7F00D96A24 /* GenreManager.swift */,
 			);
 			path = Managers;
@@ -400,6 +406,7 @@
 				F5629C421FEB1B2F004B2E3E /* ImageCollectionViewCell.swift in Sources */,
 				F5E01A501FBB544400A4413F /* LoginAPI.swift in Sources */,
 				434B7C2E1FFC1D8200038A11 /* MenuTableViewController.swift in Sources */,
+				43A27F442003BF5D00F7B95A /* WatchlistManager.swift in Sources */,
 				43227BD81FF1C47200BDD67C /* Videos.swift in Sources */,
 				F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */,
 				F54A46C91FE9CD33008509A8 /* Images.swift in Sources */,
@@ -410,6 +417,7 @@
 				F512F0571FC4859B00AED8A7 /* MovieAPI.swift in Sources */,
 				F506C2731FC0B99A00B85511 /* RoundButton.swift in Sources */,
 				F5C451061FC7545D0087F13E /* MovieCell.swift in Sources */,
+				43A27F462003C04800F7B95A /* WatchlistAPI.swift in Sources */,
 				F506C26D1FC0912100B85511 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
