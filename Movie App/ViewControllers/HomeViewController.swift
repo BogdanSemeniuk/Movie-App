@@ -23,6 +23,9 @@ class HomeViewController: UIViewController {
     private lazy var nowPlayingVC: MoviesViewController = {
         return MoviesViewController.create(kindOfMovie: .nowPlaying)
     }()
+    private lazy var watchlistVC: WatchlistViewController = {
+        return WatchlistViewController()
+    }()
     private let nc = UINavigationController()
     private let loginManager = LoginManager()
     
@@ -37,6 +40,8 @@ class HomeViewController: UIViewController {
                 setContent(vc: topRatedVC)
             case .nowPlaying:
                 setContent(vc: nowPlayingVC)
+            case .myList:
+                setContent(vc: watchlistVC)
             default:
                 break
             }
@@ -89,6 +94,9 @@ class HomeViewController: UIViewController {
                     self.loginManager.getTokenAndRedirectToApp()
                 case .logout:
                     Keychain.sharedStorage.clear()
+                case .myList:
+                    self.removeFromContent()
+                    self.selectedMenuItem = selectedItem
                 default:
                     break
                 }
@@ -104,7 +112,7 @@ class HomeViewController: UIViewController {
         remove(viewController: nc)
     }
     
-    func setContent(vc: MoviesViewController) {
+    func setContent(vc: UIViewController) {
         nc.viewControllers.removeAll()
         nc.viewControllers.append(vc)
         createMenuButton(viewController: vc)
