@@ -17,7 +17,7 @@ struct Movie: Decodable {
     var genres: [Genre]?
     var budget: Int?
     var title: String
-    var overview: String
+    var overview: String?
     var posterPath: String?
     var countries: [Country]?
     var releaseDate: String

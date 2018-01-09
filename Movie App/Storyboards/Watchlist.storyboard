@@ -13,7 +13,7 @@
         <!--Watchlist View Controller-->
         <scene sceneID="KtV-yG-0NN">
             <objects>
-                <viewController id="29G-Mj-SpS" customClass="WatchlistViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WatchlistVC" id="29G-Mj-SpS" customClass="WatchlistViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jqS-ad-CPa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,22 +22,33 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="watchCell" rowHeight="99" id="3Y9-xL-MIM">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="99"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="watchCell" rowHeight="100" id="3Y9-xL-MIM" customClass="WatchlistCell" customModule="Movie_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Y9-xL-MIM" id="sKt-D6-uo6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="98.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ON-7w-fgP">
-                                                    <rect key="frame" x="82" y="39" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ct-7U-IBZ">
+                                                    <rect key="frame" x="10" y="29.5" width="355" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="JZe-M6-X55"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6ct-7U-IBZ" firstAttribute="centerY" secondItem="sKt-D6-uo6" secondAttribute="centerY" id="2Pb-as-wtF"/>
+                                                <constraint firstItem="6ct-7U-IBZ" firstAttribute="centerX" secondItem="sKt-D6-uo6" secondAttribute="centerX" id="Wzf-el-HUc"/>
+                                                <constraint firstItem="6ct-7U-IBZ" firstAttribute="leading" secondItem="sKt-D6-uo6" secondAttribute="leading" constant="10" id="pKQ-Jh-8c9"/>
+                                                <constraint firstAttribute="trailing" secondItem="6ct-7U-IBZ" secondAttribute="trailing" constant="10" id="uEp-Yj-c98"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="6ct-7U-IBZ" id="ltb-Sx-Isg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

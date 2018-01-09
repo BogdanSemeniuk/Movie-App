@@ -23,8 +23,8 @@ class HomeViewController: UIViewController {
     private lazy var nowPlayingVC: MoviesViewController = {
         return MoviesViewController.create(kindOfMovie: .nowPlaying)
     }()
-    private lazy var watchlistVC: WatchlistViewController = {
-        return WatchlistViewController()
+    private lazy var watchlistVC: UIViewController = {
+        return WatchlistViewController.create()
     }()
     private let nc = UINavigationController()
     private let loginManager = LoginManager()

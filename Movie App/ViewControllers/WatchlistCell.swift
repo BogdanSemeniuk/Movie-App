@@ -10,9 +10,7 @@ import UIKit
 
 class WatchlistCell: UITableViewCell {
 
-//    @IBOutlet weak var posterImageView: UIImageView!
-//    @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var genresLabel: UILabel!
-//    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     
 }

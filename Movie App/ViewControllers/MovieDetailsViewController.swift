@@ -38,7 +38,7 @@ class MovieDetailsViewController: UIViewController {
         titleLabel.text = movieDetails.title
         releaseLabel.text = createYearString(date: movieDetails.releaseDate)
         genresLabel.text = createGenresString(genresId: movieDetails.genreIds!)
-        overviewLabel.text = "Overview: " + movieDetails.overview
+        overviewLabel.text = "Overview: " + movieDetails.overview!
         budgetLabel.text = ""
         countryLabel.text = ""
         videoPlayerView.backgroundColor = UIColor.clear

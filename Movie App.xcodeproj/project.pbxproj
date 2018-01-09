@@ -20,6 +20,8 @@
 		43A27F462003C04800F7B95A /* WatchlistAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F452003C04800F7B95A /* WatchlistAPI.swift */; };
 		43A27F4A2003EE4400F7B95A /* WatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F492003EE4400F7B95A /* WatchlistCell.swift */; };
 		43A27F4C2003FC9D00F7B95A /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F4B2003FC9D00F7B95A /* WatchlistViewController.swift */; };
+		43C968B32004F22F00AE95B8 /* MovieObj+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C968B12004F22F00AE95B8 /* MovieObj+CoreDataClass.swift */; };
+		43C968B42004F22F00AE95B8 /* MovieObj+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C968B22004F22F00AE95B8 /* MovieObj+CoreDataProperties.swift */; };
 		F506C26D1FC0912100B85511 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26C1FC0912100B85511 /* Keychain.swift */; };
 		F506C26F1FC096F800B85511 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26E1FC096F800B85511 /* MoviesViewController.swift */; };
 		F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C2701FC0A84300B85511 /* LoginPageViewController.swift */; };
@@ -65,6 +67,8 @@
 		43A27F452003C04800F7B95A /* WatchlistAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAPI.swift; sourceTree = "<group>"; };
 		43A27F492003EE4400F7B95A /* WatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCell.swift; sourceTree = "<group>"; };
 		43A27F4B2003FC9D00F7B95A /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
+		43C968B12004F22F00AE95B8 /* MovieObj+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieObj+CoreDataClass.swift"; sourceTree = "<group>"; };
+		43C968B22004F22F00AE95B8 /* MovieObj+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieObj+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		688DB312004A8D6F717657B2 /* Pods-Movie App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4FB34A478F95893481D52AD /* Pods_Movie_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABB67D9B42D385E39EC901E /* Pods-Movie App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.release.xcconfig"; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 		F5C623661FC9FEC0003C49AF /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				43C968B12004F22F00AE95B8 /* MovieObj+CoreDataClass.swift */,
+				43C968B22004F22F00AE95B8 /* MovieObj+CoreDataProperties.swift */,
 				F55447201FD425AD004900F5 /* GenreObj+CoreDataClass.swift */,
 				F55447211FD425AD004900F5 /* GenreObj+CoreDataProperties.swift */,
 				F515533D1FCDEEE700D96A24 /* CoreDataManager.swift */,
@@ -396,6 +402,7 @@
 				F5E01A4C1FBB0D2000A4413F /* LoginManager.swift in Sources */,
 				F5099C901FDEDCA000A0E963 /* RatingView.swift in Sources */,
 				F541B0421FDDE717002F98D8 /* MovieDetailsSupport.swift in Sources */,
+				43C968B32004F22F00AE95B8 /* MovieObj+CoreDataClass.swift in Sources */,
 				436364071FF6BB9000D8326F /* HomeViewController.swift in Sources */,
 				43A27F4C2003FC9D00F7B95A /* WatchlistViewController.swift in Sources */,
 				F50E746F1FC5E98E0041D0D5 /* PackageOfMovies.swift in Sources */,
@@ -404,6 +411,7 @@
 				F5E72C3D1FCCA927007F4F5A /* GenresList.swift in Sources */,
 				F55447231FD425AD004900F5 /* GenreObj+CoreDataProperties.swift in Sources */,
 				F5E72C3F1FCCAA12007F4F5A /* GenreAPI.swift in Sources */,
+				43C968B42004F22F00AE95B8 /* MovieObj+CoreDataProperties.swift in Sources */,
 				4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */,
 				43A27F4A2003EE4400F7B95A /* WatchlistCell.swift in Sources */,
 				4322A84F1FF79DF30066533D /* UIViewController+Embed.swift in Sources */,

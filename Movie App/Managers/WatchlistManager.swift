@@ -8,6 +8,7 @@
 
 import Foundation
 import Moya
+import CoreData
 
 class WatchlistManager {
     lazy var provider = MoyaProvider<WatchlistAPI>()
@@ -26,6 +27,20 @@ class WatchlistManager {
             case let .failure(error):
                 print(error.errorDescription ?? "Unknown error")
             }
+        }
+    }
+    
+    func saveMovies(movies: [Movie]) {
+        for movie in movies {
+            let entity = NSEntityDescription.entity(forEntityName: "MovieObj", in: CoreDataManager.context)
+            let movieObject = MovieObj(entity: entity!, insertInto: CoreDataManager.context)
+            movieObject.title = movie.title
+            movieObject.overview = movie.overview
+            if let genres = movie.genreIds {
+                movieObject.genres = genres
+            }
+            movieObject.poster = movie.posterPath
+            CoreDataManager.saveContext()
         }
     }
 }
