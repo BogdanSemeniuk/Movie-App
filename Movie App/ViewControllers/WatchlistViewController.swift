@@ -34,7 +34,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         watchlistManager.getMoviesFromWatchlist(page: 1) { (movies) in
-            self.watchlistManager.saveMovies(movies: movies.results!)
+            self.watchlistManager.updateBaseIfNeed(movies: movies.results!)
         }
         
         navigationItem.title = "My Watchlist"

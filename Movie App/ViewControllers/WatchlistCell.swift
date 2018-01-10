@@ -10,7 +10,6 @@ import UIKit
 
 class WatchlistCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
     
     
 }

@@ -6,12 +6,13 @@
     </entity>
     <entity name="MovieObj" representedClassName="MovieObj" syncable="YES">
         <attribute name="genres" attributeType="Transformable" customClassName="[Int]" syncable="YES"/>
-        <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="poster" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="voteAverage" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="voteCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="GenreObj" positionX="216" positionY="-27" width="128" height="75"/>
-        <element name="MovieObj" positionX="27" positionY="-25" width="128" height="105"/>
+        <element name="MovieObj" positionX="27" positionY="-25" width="128" height="120"/>
     </elements>
 </model>

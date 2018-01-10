@@ -23,6 +23,7 @@ struct Movie: Decodable {
     var releaseDate: String
     var credits: Credits?
     var voteAverage: Float
+    var voteCount: Int
     var genreIds: [Int]?
     
     enum CodingKeys: String, CodingKey {
@@ -36,6 +37,7 @@ struct Movie: Decodable {
         case countries = "production_countries"
         case credits
         case voteAverage = "vote_average"
+        case voteCount = "vote_count"
         case genreIds = "genre_ids"
     }
 }

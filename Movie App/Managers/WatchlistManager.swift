@@ -12,6 +12,7 @@ import CoreData
 
 class WatchlistManager {
     lazy var provider = MoyaProvider<WatchlistAPI>()
+    private let fetchRequest: NSFetchRequest<MovieObj> = MovieObj.fetchRequest()
     
     func getMoviesFromWatchlist(page: Int, complition: @escaping (PackageOfMovies) -> ()) {
         provider.request(.getMoviesFromMyWatchlist(page: page)) { (result) in
@@ -30,12 +31,55 @@ class WatchlistManager {
         }
     }
     
-    func saveMovies(movies: [Movie]) {
+    private func deleteAllMovies() {
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        do {
+            try CoreDataManager.context.execute(batchDeleteRequest)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func printAllMoviesInBase() {
+        do {
+            let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
+            allMovies.forEach({ (movie) in
+                print(movie.title!)
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    func updateBaseIfNeed(movies: [Movie]) {
+        if moviesArentMatch(movies: movies) {
+            deleteAllMovies()
+            saveMovies(movies: movies)
+        }
+    }
+    
+    private func moviesArentMatch(movies: [Movie]) -> Bool {
+        let arrayOfNames = movies.map { $0.title }
+        do {
+            let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
+            for movie in allMovies {
+                if !arrayOfNames.contains(movie.title!) || arrayOfNames.count != allMovies.count {
+                    return true
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return false
+    }
+    
+    private func saveMovies(movies: [Movie]) {
         for movie in movies {
             let entity = NSEntityDescription.entity(forEntityName: "MovieObj", in: CoreDataManager.context)
             let movieObject = MovieObj(entity: entity!, insertInto: CoreDataManager.context)
             movieObject.title = movie.title
-            movieObject.overview = movie.overview
+            movieObject.voteAverage = movie.voteAverage
+            movieObject.voteCount = Int16(movie.voteCount)
             if let genres = movie.genreIds {
                 movieObject.genres = genres
             }
