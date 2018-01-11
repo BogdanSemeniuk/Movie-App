@@ -52,6 +52,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "watchCell", for: indexPath) as! WatchlistCell
         configureCell(cell: cell, atIndexPath: indexPath)
         
+        
         return cell
     }
     
