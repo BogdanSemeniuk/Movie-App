@@ -2,7 +2,7 @@
 //  MovieObj+CoreDataClass.swift
 //  Movie App
 //
-//  Created by Bogdan on 10.01.2018.
+//  Created by Bogdan on 11.01.2018.
 //  Copyright © 2018 Bogdan Semeniuk. All rights reserved.
 //
 //

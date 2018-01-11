@@ -40,9 +40,10 @@ class WatchlistManager {
         }
     }
     
-    private func printAllMoviesInBase() {
+    func printAllMoviesInBase() {
         do {
             let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
+            print("All movies: ")
             allMovies.forEach({ (movie) in
                 print(movie.title!)
             })
@@ -62,8 +63,11 @@ class WatchlistManager {
         let arrayOfNames = movies.map { $0.title }
         do {
             let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
+            if arrayOfNames.count != allMovies.count {
+                return true
+            }
             for movie in allMovies {
-                if !arrayOfNames.contains(movie.title!) || arrayOfNames.count != allMovies.count {
+                if !arrayOfNames.contains(movie.title!) {
                     return true
                 }
             }

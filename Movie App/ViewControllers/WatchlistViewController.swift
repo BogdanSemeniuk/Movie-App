@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Kingfisher
 
 class WatchlistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -32,11 +33,10 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         } catch {
             print(error)
         }
-        
+        watchlistManager.printAllMoviesInBase()
         watchlistManager.getMoviesFromWatchlist(page: 1) { (movies) in
             self.watchlistManager.updateBaseIfNeed(movies: movies.results!)
         }
-        
         navigationItem.title = "My Watchlist"
     }
 
@@ -49,10 +49,22 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "watchCell", for: indexPath) as! WatchlistCell
+        configureCell(cell: cell, atIndexPath: indexPath)
         
         return cell
+    }
+    
+    func configureCell(cell: WatchlistCell, atIndexPath indexPath: IndexPath) {
+        let movie = frc.object(at: indexPath)
+        cell.titleLabel.text = movie.title!
+        cell.genresLabel.text = createGenresString(genresId: movie.genres!)
+        cell.voteCount.text = String(movie.voteCount)
+        cell.voteAverage.text = String(movie.voteAverage)
+        
+        guard let posterPath = movie.poster else {return}
+        let urlPoster = createPosterURL(path: posterPath)
+        cell.posterImageView.kf.setImage(with: urlPoster)
     }
 
     static func create() -> UIViewController {
