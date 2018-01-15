@@ -53,28 +53,25 @@ class WatchlistManager {
     }
     
     func updateBaseIfNeed(movies: [Movie]) {
-        if moviesArentMatch(movies: movies) {
+        if moviesDontMatch(movies: movies) {
             deleteAllMovies()
             saveMovies(movies: movies)
         }
     }
     
-    private func moviesArentMatch(movies: [Movie]) -> Bool {
-        let arrayOfNames = movies.map { $0.title }
+    private func moviesDontMatch(movies: [Movie]) -> Bool {
+        
+        var moviesIdFromResponse: Set<Int> = []
+        movies.forEach { moviesIdFromResponse.insert($0.id) }
+        var moviesIdFromCoreData: Set<Int> = []
         do {
             let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
-            if arrayOfNames.count != allMovies.count {
-                return true
-            }
-            for movie in allMovies {
-                if !arrayOfNames.contains(movie.title!) {
-                    return true
-                }
-            }
+            allMovies.forEach({moviesIdFromCoreData.insert(Int($0.id)) })
         } catch {
             print(error)
         }
-        return false
+        return moviesIdFromResponse != moviesIdFromCoreData
+        
     }
     
     private func saveMovies(movies: [Movie]) {
@@ -83,11 +80,12 @@ class WatchlistManager {
             let movieObject = MovieObj(entity: entity!, insertInto: CoreDataManager.context)
             movieObject.title = movie.title
             movieObject.voteAverage = movie.voteAverage
-            movieObject.voteCount = Int16(movie.voteCount)
+            movieObject.voteCount = Int32(movie.voteCount)
             if let genres = movie.genreIds {
                 movieObject.genres = genres
             }
             movieObject.poster = movie.posterPath
+            movieObject.id = Int32(movie.id)
             CoreDataManager.saveContext()
         }
     }

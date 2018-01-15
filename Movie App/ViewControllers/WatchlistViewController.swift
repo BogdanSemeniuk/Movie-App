@@ -23,16 +23,17 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         let frController = NSFetchedResultsController(fetchRequest:
         fetchRequest, managedObjectContext:
         CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        do {
+            try frController.performFetch()
+        } catch {
+            print(error)
+        }
         return frController
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try frc.performFetch()
-        } catch {
-            print(error)
-        }
+        
         watchlistManager.printAllMoviesInBase()
         watchlistManager.getMoviesFromWatchlist(page: 1) { (movies) in
             self.watchlistManager.updateBaseIfNeed(movies: movies.results!)
@@ -50,22 +51,9 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "watchCell", for: indexPath) as! WatchlistCell
-        configureCell(cell: cell, atIndexPath: indexPath)
-        
-        
-        return cell
-    }
-    
-    func configureCell(cell: WatchlistCell, atIndexPath indexPath: IndexPath) {
         let movie = frc.object(at: indexPath)
-        cell.titleLabel.text = movie.title!
-        cell.genresLabel.text = createGenresString(genresId: movie.genres!)
-        cell.voteCount.text = String(movie.voteCount)
-        cell.voteAverage.text = String(movie.voteAverage)
-        
-        guard let posterPath = movie.poster else {return}
-        let urlPoster = createPosterURL(path: posterPath)
-        cell.posterImageView.kf.setImage(with: urlPoster)
+        cell.configureCell(movie: movie)
+        return cell
     }
 
     static func create() -> UIViewController {
