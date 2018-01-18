@@ -34,11 +34,15 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        navigationItem.title = "My Watchlist"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         watchlistManager.getMoviesFromWatchlist(page: 1) { (movies) in
             self.watchlistManager.updateBaseIfNeeded(moviesFromResponse: movies.results!)
         }
-        navigationItem.title = "My Watchlist"
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

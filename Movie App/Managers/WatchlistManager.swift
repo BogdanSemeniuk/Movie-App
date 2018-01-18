@@ -45,19 +45,22 @@ class WatchlistManager {
     
     
     func updateBaseIfNeeded(moviesFromResponse movies: [Movie]) {
-        removeExcessMoviesFromBase(moviesFromResponse: movies)
-        let moviesToAdd = addMissingMoviesToBase(moviesFromResponse: movies)
-        saveMoviesToBase(movies: moviesToAdd)
+        let setIdFromBase = moviesIdFromBase()
+        let setIdFromResponse = moviesIdFromResponse(moviesFromResponse: movies)
+        
+        if setIdFromBase != setIdFromResponse {
+            removeExcessMoviesFromBase(moviesFromResponse: movies)
+            let moviesToAdd = addMissingMoviesToBase(moviesFromResponse: movies)
+            saveMoviesToBase(movies: moviesToAdd)
+        }
     }
     
     private func addMissingMoviesToBase(moviesFromResponse movies: [Movie]) -> [Movie] {
-        let moviesFromBase = allMoviesInBase()
-        var moviesIdFromBase: Set<Int> = []
-        moviesFromBase.forEach({moviesIdFromBase.insert(Int($0.id)) })
+        let setIdFromBase = moviesIdFromBase()
         
         var moviesToAdd = [Movie]()
         movies.forEach { (movie) in
-            if !moviesIdFromBase.contains(movie.id) {
+            if !setIdFromBase.contains(movie.id) {
                 moviesToAdd.append(movie)
             }
         }
@@ -67,15 +70,27 @@ class WatchlistManager {
     private func removeExcessMoviesFromBase(moviesFromResponse movies: [Movie]) {
         let moviesFromBase = allMoviesInBase()
         
-        var moviesIdFromResponse: Set<Int> = []
-        movies.forEach { moviesIdFromResponse.insert($0.id) }
+        let setIdFromResponse = moviesIdFromResponse(moviesFromResponse: movies)
         
         moviesFromBase.forEach { (movie) in
-            if !moviesIdFromResponse.contains(Int(movie.id)) {
+            if !setIdFromResponse.contains(Int(movie.id)) {
                 CoreDataManager.context.delete(movie)
                 CoreDataManager.saveContext()
             }
         }
+    }
+    
+    private func moviesIdFromBase() -> Set<Int> {
+        let moviesFromBase = allMoviesInBase()
+        var moviesId: Set<Int> = []
+        moviesFromBase.forEach({moviesId.insert(Int($0.id)) })
+        return moviesId
+    }
+    
+    private func moviesIdFromResponse(moviesFromResponse movies: [Movie]) -> Set<Int> {
+        var moviesId: Set<Int> = []
+        movies.forEach { moviesId.insert($0.id) }
+        return moviesId
     }
     
     private func allMoviesInBase() -> [MovieObj] {
