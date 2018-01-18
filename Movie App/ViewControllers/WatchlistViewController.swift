@@ -35,9 +35,8 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        watchlistManager.printAllMoviesInBase()
         watchlistManager.getMoviesFromWatchlist(page: 1) { (movies) in
-            self.watchlistManager.updateBaseIfNeed(movies: movies.results!)
+            self.watchlistManager.updateBaseIfNeeded(moviesFromResponse: movies.results!)
         }
         navigationItem.title = "My Watchlist"
     }
@@ -59,25 +58,21 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private func controllerWillChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
-        print("beginUpdates")
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break
         case .delete:
-            print("delete")
             if let indexPath = indexPath {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             break
         case .move:
-            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
@@ -86,7 +81,6 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             break
         case .update:
-            print("update")
             if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? WatchlistCell  {
                 let movie = frc.object(at: indexPath)
                 cell.configureCell(movie: movie)
@@ -97,7 +91,6 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-        print("endUpdates")
     }
 
     static func create() -> UIViewController {
