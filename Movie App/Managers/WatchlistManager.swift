@@ -32,12 +32,18 @@ class WatchlistManager {
     }
     
     private func deleteAllMovies() {
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
         do {
-            try CoreDataManager.context.execute(batchDeleteRequest)
+            let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
+            allMovies.forEach({ (movie) in
+                CoreDataManager.context.delete(movie)
+            self.printAllMoviesInBase()
+            })
         } catch {
             print(error)
         }
+        printAllMoviesInBase()
+        CoreDataManager.saveContext()
+        printAllMoviesInBase()
     }
     
     func printAllMoviesInBase() {
@@ -59,11 +65,59 @@ class WatchlistManager {
         }
     }
     
-    private func moviesDontMatch(movies: [Movie]) -> Bool {
+    
+    func updateBaseIfNeeded(moviesFromResponse movies: [Movie]) {
+        var moviesIdFromResponse: Set<Int> = []
+        movies.forEach { moviesIdFromResponse.insert($0.id) }
+        
+        var moviesIdFromBase: Set<Int> = []
+        let allMoviesFromBase = allMoviesInBase()
+        allMoviesFromBase.forEach({moviesIdFromBase.insert(Int($0.id)) })
+        
+        print("movies id from response \(moviesIdFromResponse)")
+        print("movies id from CoreData \(moviesIdFromBase)")
+        
+        let commonMoviesId = moviesIdFromResponse.intersection(moviesIdFromBase)
+        print("common movies id \(commonMoviesId)")
+        
+        allMoviesFromBase.forEach { (movie) in
+            if !commonMoviesId.contains(Int(movie.id)) {
+                CoreDataManager.context.delete(movie)
+            }
+        }
+        CoreDataManager.saveContext()
+        
+        // добавить недостающие фильмы в базе с запроса
+    }
+    
+    func allMoviesInBase() -> [MovieObj] {
+        var allMovies = [MovieObj]()
+        do {
+            allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
+        } catch {
+            print(error)
+        }
+        return allMovies
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func moviesDontMatch(movies: [Movie]) -> Bool {
         
         var moviesIdFromResponse: Set<Int> = []
         movies.forEach { moviesIdFromResponse.insert($0.id) }
         var moviesIdFromCoreData: Set<Int> = []
+        
         do {
             let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
             allMovies.forEach({moviesIdFromCoreData.insert(Int($0.id)) })
@@ -71,7 +125,6 @@ class WatchlistManager {
             print(error)
         }
         return moviesIdFromResponse != moviesIdFromCoreData
-        
     }
     
     private func saveMovies(movies: [Movie]) {

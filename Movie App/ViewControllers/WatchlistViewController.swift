@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 import Kingfisher
 
-class WatchlistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WatchlistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     private let watchlistManager = WatchlistManager()
     
-    var frc: NSFetchedResultsController<MovieObj> = {
+    private lazy var frc: NSFetchedResultsController<MovieObj> = {
         let fetchRequest = NSFetchRequest<MovieObj>(entityName: "MovieObj")
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -23,6 +23,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         let frController = NSFetchedResultsController(fetchRequest:
         fetchRequest, managedObjectContext:
         CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        frController.delegate = self
         do {
             try frController.performFetch()
         } catch {
@@ -54,6 +55,49 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         let movie = frc.object(at: indexPath)
         cell.configureCell(movie: movie)
         return cell
+    }
+    
+    private func controllerWillChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+        print("beginUpdates")
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            print("insert")
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+        case .delete:
+            print("delete")
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break
+        case .move:
+            print("move")
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break
+        case .update:
+            print("update")
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? WatchlistCell  {
+                let movie = frc.object(at: indexPath)
+                cell.configureCell(movie: movie)
+            }
+            break;
+        }
+    }
+    
+    private func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+        print("endUpdates")
     }
 
     static func create() -> UIViewController {
