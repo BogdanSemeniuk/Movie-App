@@ -17,6 +17,7 @@ enum MovieAPI {
     case getMovieDetails(id: Int)
     case getAllImages(id: Int)
     case getMovieTrailers(id: Int)
+    case getMovieStatusInWatchlist(id: Int)
 }
 
 extension MovieAPI: TargetType {
@@ -40,6 +41,8 @@ extension MovieAPI: TargetType {
             return "\(id)/images"
         case .getMovieTrailers(id: let id):
             return "\(id)/videos"
+        case .getMovieStatusInWatchlist(id: let id):
+            return "\(id)/account_states"
         }
     }
     
@@ -52,6 +55,7 @@ extension MovieAPI: TargetType {
     }
     
     var task: Task {
+        let sessionId = Keychain.sharedStorage.get("session")
         switch self {
         case .getPopularMovies(page: let page), .getUpcomingMovies(page: let page), .getTopRatedMovies(page: let page), .getNowPlayingMovies(page: let page):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "page":page, "region":"UA"], encoding: URLEncoding.queryString)
@@ -61,6 +65,8 @@ extension MovieAPI: TargetType {
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "include_image_language":"null,en"], encoding: URLEncoding.queryString)
         case .getMovieTrailers(id: _):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US"], encoding: URLEncoding.queryString)
+        case .getMovieStatusInWatchlist(id: _):
+            return .requestParameters(parameters: ["api_key":apiKey, "session_id":sessionId!], encoding: URLEncoding.queryString)
         }
     }
     

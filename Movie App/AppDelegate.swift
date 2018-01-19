@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if loginManager.isLogined {
             initialVC = HomeViewController()
         }
-        
+        print(Keychain.sharedStorage.get("session"))
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialVC
         self.window?.makeKeyAndVisible()

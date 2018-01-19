@@ -259,15 +259,26 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJF-Tg-4Ky">
-                                                <rect key="frame" x="195.5" y="148" width="50" height="50"/>
+                                                <rect key="frame" x="195.5" y="148" width="40" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Zcf-1l-J8u"/>
-                                                    <constraint firstAttribute="width" constant="50" id="znE-Lh-ZFY"/>
+                                                    <constraint firstAttribute="width" constant="40" id="znE-Lh-ZFY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-CondensedBold" family="American Typewriter" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edM-BR-KB3">
+                                                <rect key="frame" x="245.5" y="151" width="45" height="45"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="LO0-05-Mww"/>
+                                                    <constraint firstAttribute="width" constant="45" id="krW-zr-7ZS"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="addOrRemoveButtonTouched" destination="sTi-6B-4rB" eventType="touchUpInside" id="r4a-2I-Wmo"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -281,7 +292,9 @@
                                             <constraint firstAttribute="trailing" secondItem="LAz-1Z-qP7" secondAttribute="trailing" constant="10" id="CCo-Cc-R9O"/>
                                             <constraint firstItem="VCj-6Z-ZeE" firstAttribute="leading" secondItem="LAz-1Z-qP7" secondAttribute="leading" id="CX0-is-Zd8"/>
                                             <constraint firstItem="aHi-9Y-J4b" firstAttribute="leading" secondItem="VCj-6Z-ZeE" secondAttribute="leading" id="CiO-rF-99I"/>
+                                            <constraint firstItem="edM-BR-KB3" firstAttribute="leading" secondItem="aJF-Tg-4Ky" secondAttribute="trailing" constant="10" id="E0O-k7-pYA"/>
                                             <constraint firstItem="k0k-Bo-12h" firstAttribute="top" secondItem="b64-6K-r3T" secondAttribute="bottom" constant="10" id="H85-f2-xer"/>
+                                            <constraint firstItem="edM-BR-KB3" firstAttribute="centerY" secondItem="7Jq-Pf-BvK" secondAttribute="centerY" id="J1b-pm-Dat"/>
                                             <constraint firstItem="LAz-1Z-qP7" firstAttribute="top" secondItem="kzH-52-inM" secondAttribute="bottom" constant="10" id="JXg-3f-vAC"/>
                                             <constraint firstItem="iiP-6X-Wwg" firstAttribute="top" secondItem="9mp-f3-Zz4" secondAttribute="bottom" constant="10" id="Jkx-jF-bJH"/>
                                             <constraint firstItem="kzH-52-inM" firstAttribute="top" secondItem="b64-6K-r3T" secondAttribute="top" id="KQf-fC-LOs"/>
@@ -329,6 +342,7 @@
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>
                         <outlet property="actorsLabel" destination="9vl-79-JXH" id="tjv-EX-OH0"/>
+                        <outlet property="addOrRemoveButton" destination="edM-BR-KB3" id="kHa-bF-YTU"/>
                         <outlet property="budgetLabel" destination="aHi-9Y-J4b" id="7sE-6s-R3c"/>
                         <outlet property="countryLabel" destination="VCj-6Z-ZeE" id="NMA-Zx-F35"/>
                         <outlet property="directorLabel" destination="k0k-Bo-12h" id="O1m-nK-V1T"/>

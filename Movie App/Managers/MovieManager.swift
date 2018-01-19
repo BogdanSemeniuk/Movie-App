@@ -130,4 +130,21 @@ class MovieManager {
             }
         }
     }
+    
+    func isWatchlistContainMovie(id: Int, complition:@escaping (MovieStatus) -> ()) {
+        provider.request(.getMovieStatusInWatchlist(id: id)) { (result) in
+            switch result {
+            case let .success(moyaResponse):
+                let responseData = moyaResponse.data
+                do {
+                    let response = try JSONDecoder().decode(MovieStatus.self, from: responseData)
+                    complition(response)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error.errorDescription ?? "Unknown error")
+            }
+        }
+    }
 }

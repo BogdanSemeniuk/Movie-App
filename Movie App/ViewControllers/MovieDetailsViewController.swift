@@ -26,8 +26,11 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var ratingView: RatingView!
     @IBOutlet weak var videoPlayerView: YTPlayerView!
     @IBOutlet weak var trailerLabel: UILabel!
+    @IBOutlet weak var addOrRemoveButton: UIButton!
+    
     
     private let moviesManager = MovieManager()
+    private let loginMamager = LoginManager()
     var movieDetails: Movie!
     
     // MARK: - Life Cycl
@@ -41,8 +44,9 @@ class MovieDetailsViewController: UIViewController {
         overviewLabel.text = "Overview: " + movieDetails.overview!
         budgetLabel.text = ""
         countryLabel.text = ""
-        videoPlayerView.backgroundColor = UIColor.clear
+        videoPlayerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         trailerLabel.text = ""
+        addOrRemoveButton.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         guard let posterPath = movieDetails.posterPath else {return}
         let urlPoster = createPosterURL(path: posterPath)
@@ -68,6 +72,14 @@ class MovieDetailsViewController: UIViewController {
                 self?.videoPlayerView.isHidden = true
             }
         }
+        if loginMamager.isLogined {
+            moviesManager.isWatchlistContainMovie(id: movieDetails.id) { [weak self] (response) in
+                let imageName = response.watchlist ? "deleteButton" : "addButton"
+                self?.addOrRemoveButton.setImage(UIImage(named: imageName), for: UIControlState.normal)
+            }
+        } else {
+            addOrRemoveButton.removeFromSuperview()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,4 +87,9 @@ class MovieDetailsViewController: UIViewController {
         
         ratingView.showRatingWithAnimation(rating: movieDetails.voteAverage)
     }
+    
+    @IBAction func addOrRemoveButtonTouched() {
+        
+    }
+    
 }
