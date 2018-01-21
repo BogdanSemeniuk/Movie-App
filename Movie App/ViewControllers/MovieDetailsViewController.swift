@@ -30,8 +30,10 @@ class MovieDetailsViewController: UIViewController {
     
     
     private let moviesManager = MovieManager()
-    private let loginMamager = LoginManager()
+    private lazy var loginMamager = LoginManager()
+    private lazy var watchlistManager = WatchlistManager()
     var movieDetails: Movie!
+    var isMovieInWatchlist: Bool?
     
     // MARK: - Life Cycl
     
@@ -74,6 +76,8 @@ class MovieDetailsViewController: UIViewController {
         }
         if loginMamager.isLogined {
             moviesManager.isWatchlistContainMovie(id: movieDetails.id) { [weak self] (response) in
+                self?.isMovieInWatchlist = response.watchlist
+                
                 let imageName = response.watchlist ? "deleteButton" : "addButton"
                 self?.addOrRemoveButton.setImage(UIImage(named: imageName), for: UIControlState.normal)
             }
@@ -89,7 +93,9 @@ class MovieDetailsViewController: UIViewController {
     }
     
     @IBAction func addOrRemoveButtonTouched() {
-        
+        if let movieInWatchlist = isMovieInWatchlist {
+            watchlistManager.removeOrAddMovie(withId: movieDetails.id, isAdd: !movieInWatchlist)
+        } 
     }
     
 }

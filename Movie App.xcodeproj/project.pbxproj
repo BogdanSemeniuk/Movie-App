@@ -12,6 +12,7 @@
 		4322A84F1FF79DF30066533D /* UIViewController+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4322A84E1FF79DF30066533D /* UIViewController+Embed.swift */; };
 		4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4322A8501FF79EB60066533D /* UIView+Embed.swift */; };
 		4322B35720002C640032BC3A /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4322B35620002C640032BC3A /* Watchlist.storyboard */; };
+		4324BB51201512AC0068C921 /* AuthorizationPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324BB50201512AC0068C921 /* AuthorizationPlugin.swift */; };
 		434B7C2C1FFC1AF900038A11 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434B7C2B1FFC1AF900038A11 /* Menu.storyboard */; };
 		434B7C2E1FFC1D8200038A11 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */; };
 		434D302B200D057900391553 /* MovieObj+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D3029200D057900391553 /* MovieObj+CoreDataClass.swift */; };
@@ -60,6 +61,7 @@
 		4322A84E1FF79DF30066533D /* UIViewController+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Embed.swift"; sourceTree = "<group>"; };
 		4322A8501FF79EB60066533D /* UIView+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Embed.swift"; sourceTree = "<group>"; };
 		4322B35620002C640032BC3A /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
+		4324BB50201512AC0068C921 /* AuthorizationPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPlugin.swift; sourceTree = "<group>"; };
 		434B7C2B1FFC1AF900038A11 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		434D3029200D057900391553 /* MovieObj+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieObj+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				F5E01A4B1FBB0D2000A4413F /* LoginManager.swift */,
 				F512F0581FC4940A00AED8A7 /* MovieManager.swift */,
 				43A27F432003BF5D00F7B95A /* WatchlistManager.swift */,
+				4324BB50201512AC0068C921 /* AuthorizationPlugin.swift */,
 				F51552FE1FCDCC7F00D96A24 /* GenreManager.swift */,
 			);
 			path = Managers;
@@ -414,6 +417,7 @@
 				F5E72C3D1FCCA927007F4F5A /* GenresList.swift in Sources */,
 				F55447231FD425AD004900F5 /* GenreObj+CoreDataProperties.swift in Sources */,
 				F5E72C3F1FCCAA12007F4F5A /* GenreAPI.swift in Sources */,
+				4324BB51201512AC0068C921 /* AuthorizationPlugin.swift in Sources */,
 				434D302C200D057900391553 /* MovieObj+CoreDataProperties.swift in Sources */,
 				4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */,
 				43716C532012AA960033C177 /* MovieStatus.swift in Sources */,

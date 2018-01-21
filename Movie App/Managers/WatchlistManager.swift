@@ -11,7 +11,7 @@ import Moya
 import CoreData
 
 class WatchlistManager {
-    lazy var provider = MoyaProvider<WatchlistAPI>()
+    lazy var provider = MoyaProvider<WatchlistAPI>(plugins: [AuthorizationPlugin()])
     private let fetchRequest: NSFetchRequest<MovieObj> = MovieObj.fetchRequest()
     
     func getMoviesFromWatchlist(page: Int, complition: @escaping (PackageOfMovies) -> ()) {
@@ -31,19 +31,35 @@ class WatchlistManager {
         }
     }
     
-    private func printAllMoviesInBase() {
-        do {
-            let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
-            print("All movies: ")
-            allMovies.forEach({ (movie) in
-                print(movie.title!)
-            })
-        } catch {
-            print(error)
+    func removeOrAddMovie(withId id: Int, isAdd: Bool) {
+        provider.request(.addMovieToMyWatchlist(id: id, add: isAdd)) { result in
+            switch result {
+            case let .success(moyaResponse):
+                let data = moyaResponse.data
+                let statusCode = moyaResponse.statusCode
+                let json = try! JSONSerialization.jsonObject(with: data, options: [])
+                
+                print(json)
+                print(statusCode)
+            case .failure(_):
+                break
+        }
         }
     }
-    
-    
+
+
+//    private func printAllMoviesInBase() {
+//        do {
+//            let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
+//            print("All movies: ")
+//            allMovies.forEach({ (movie) in
+//                print(movie.title!)
+//            })
+//        } catch {
+//            print(error)
+//        }
+//    }
+
     func updateBaseIfNeeded(moviesFromResponse movies: [Movie]) {
         let setIdFromBase = moviesIdFromBase()
         let setIdFromResponse = moviesIdFromResponse(moviesFromResponse: movies)
