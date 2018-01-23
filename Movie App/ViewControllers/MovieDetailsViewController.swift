@@ -33,7 +33,12 @@ class MovieDetailsViewController: UIViewController {
     private lazy var loginMamager = LoginManager()
     private lazy var watchlistManager = WatchlistManager()
     var movieDetails: Movie!
-    var isMovieInWatchlist: Bool?
+    var isMovieInWatchlist: Bool? {
+        didSet {
+            let imageName = isMovieInWatchlist! ? "deleteButton" : "addButton"
+            addOrRemoveButton.setImage(UIImage(named: imageName), for: UIControlState.normal)
+        }
+    }
     
     // MARK: - Life Cycl
     
@@ -74,16 +79,7 @@ class MovieDetailsViewController: UIViewController {
                 self?.videoPlayerView.isHidden = true
             }
         }
-        if loginMamager.isLogined {
-            moviesManager.isWatchlistContainMovie(id: movieDetails.id) { [weak self] (response) in
-                self?.isMovieInWatchlist = response.watchlist
-                
-                let imageName = response.watchlist ? "deleteButton" : "addButton"
-                self?.addOrRemoveButton.setImage(UIImage(named: imageName), for: UIControlState.normal)
-            }
-        } else {
-            addOrRemoveButton.removeFromSuperview()
-        }
+        setButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,8 +90,19 @@ class MovieDetailsViewController: UIViewController {
     
     @IBAction func addOrRemoveButtonTouched() {
         if let movieInWatchlist = isMovieInWatchlist {
-            watchlistManager.removeOrAddMovie(withId: movieDetails.id, isAdd: !movieInWatchlist)
+            watchlistManager.removeOrAddMovie(withId: movieDetails.id, needToAdd: !movieInWatchlist, complition: {
+                self.setButton()
+            })
         } 
     }
     
+    private func setButton() {
+        if loginMamager.isLogined {
+            moviesManager.isWatchlistContainMovie(id: movieDetails.id) { [weak self] (response) in
+                self?.isMovieInWatchlist = response.watchlist
+            }
+        } else {
+            addOrRemoveButton.removeFromSuperview()
+        }
+    }
 }

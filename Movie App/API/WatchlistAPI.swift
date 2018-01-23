@@ -48,8 +48,8 @@ extension WatchlistAPI: TargetType {
         switch self {
         case .getMoviesFromMyWatchlist(page: let page):
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US","session_id": sessionId!, "page":page], encoding: URLEncoding.queryString)
-        case .addMovieToMyWatchlist(id: _, add: _):
-            return .requestParameters(parameters: ["api_key":apiKey, "session_id": sessionId!], encoding: URLEncoding.queryString)
+        case .addMovieToMyWatchlist(id: let id, add: let add):
+            return .requestParameters(parameters: ["media_type": "movie", "media_id": id, "watchlist": add], encoding: JSONEncoding.default)
         }
     }
     
@@ -61,18 +61,4 @@ extension WatchlistAPI: TargetType {
             return nil
         }
     }
-    
-    var parameters: [String : Any]? {
-        switch self {
-        case .addMovieToMyWatchlist(id: let id, add: let add):
-            return ["media_type": "movie", "media_id": id, "watchlist": add]
-        case .getMoviesFromMyWatchlist(page: _):
-            return nil
-        }
-    }
-    
-    var parameterEncoding: Moya.ParameterEncoding {
-        return JSONEncoding.default
-    }
-    
 }

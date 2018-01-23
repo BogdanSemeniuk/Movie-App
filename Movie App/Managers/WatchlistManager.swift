@@ -31,34 +31,23 @@ class WatchlistManager {
         }
     }
     
-    func removeOrAddMovie(withId id: Int, isAdd: Bool) {
-        provider.request(.addMovieToMyWatchlist(id: id, add: isAdd)) { result in
+    func removeOrAddMovie(withId id: Int, needToAdd: Bool, complition:  @escaping () -> ()) {
+        provider.request(.addMovieToMyWatchlist(id: id, add: needToAdd)) { (result) in
             switch result {
             case let .success(moyaResponse):
-                let data = moyaResponse.data
-                let statusCode = moyaResponse.statusCode
-                let json = try! JSONSerialization.jsonObject(with: data, options: [])
-                
-                print(json)
-                print(statusCode)
-            case .failure(_):
-                break
+                switch moyaResponse.statusCode
+                {
+                case  200 ... 299 :
+                    complition()
+                default:
+                    print("Failure")
+                }
+            case let .failure(error):
+                print(error.errorDescription ?? "Unknown error")
+            }
         }
-        }
+    
     }
-
-
-//    private func printAllMoviesInBase() {
-//        do {
-//            let allMovies = try CoreDataManager.context.fetch(fetchRequest) as [MovieObj]
-//            print("All movies: ")
-//            allMovies.forEach({ (movie) in
-//                print(movie.title!)
-//            })
-//        } catch {
-//            print(error)
-//        }
-//    }
 
     func updateBaseIfNeeded(moviesFromResponse movies: [Movie]) {
         let setIdFromBase = moviesIdFromBase()

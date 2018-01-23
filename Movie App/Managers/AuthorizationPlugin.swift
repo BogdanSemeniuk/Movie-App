@@ -10,9 +10,14 @@ import Foundation
 import Moya
 
 class AuthorizationPlugin: PluginType {
-    
+    let sessionId = Keychain.sharedStorage.get("session")
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
-        print(request.url?.absoluteString)
-        return request
+        guard let urlString = request.url?.absoluteString else {return request}
+        let newUrlString = urlString + "?api_key=\(apiKey)&session_id=\(sessionId!)"
+        
+        var newRequest = request
+        newRequest.url = URL(string: newUrlString)
+        
+        return newRequest
     }
 }
