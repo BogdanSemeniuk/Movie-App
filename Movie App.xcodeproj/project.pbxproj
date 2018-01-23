@@ -19,6 +19,7 @@
 		434D302C200D057900391553 /* MovieObj+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D302A200D057900391553 /* MovieObj+CoreDataProperties.swift */; };
 		43593E921FF180C8009AE349 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43593E911FF180C8009AE349 /* ImagesViewController.swift */; };
 		436364071FF6BB9000D8326F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436364061FF6BB9000D8326F /* HomeViewController.swift */; };
+		436DA7A22017A99F002E07C8 /* MovieStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436DA7A12017A99F002E07C8 /* MovieStatus.swift */; };
 		43A27F442003BF5D00F7B95A /* WatchlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F432003BF5D00F7B95A /* WatchlistManager.swift */; };
 		43A27F462003C04800F7B95A /* WatchlistAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F452003C04800F7B95A /* WatchlistAPI.swift */; };
 		43A27F4A2003EE4400F7B95A /* WatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F492003EE4400F7B95A /* WatchlistCell.swift */; };
@@ -67,6 +68,7 @@
 		434D302A200D057900391553 /* MovieObj+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieObj+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		43593E911FF180C8009AE349 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		436364061FF6BB9000D8326F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		436DA7A12017A99F002E07C8 /* MovieStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStatus.swift; sourceTree = "<group>"; };
 		43A27F432003BF5D00F7B95A /* WatchlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistManager.swift; sourceTree = "<group>"; };
 		43A27F452003C04800F7B95A /* WatchlistAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAPI.swift; sourceTree = "<group>"; };
 		43A27F492003EE4400F7B95A /* WatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCell.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				43227BD71FF1C47200BDD67C /* Videos.swift */,
 				F5427E3C1FD830F800C2C279 /* Country.swift */,
 				F50961E11FD5C08F00D33581 /* Credits.swift */,
+				436DA7A12017A99F002E07C8 /* MovieStatus.swift */,
 				F5E72C3C1FCCA927007F4F5A /* GenresList.swift */,
 			);
 			path = Models;
@@ -416,6 +419,7 @@
 				F5E72C3F1FCCAA12007F4F5A /* GenreAPI.swift in Sources */,
 				4324BB51201512AC0068C921 /* AuthorizationPlugin.swift in Sources */,
 				434D302C200D057900391553 /* MovieObj+CoreDataProperties.swift in Sources */,
+				436DA7A22017A99F002E07C8 /* MovieStatus.swift in Sources */,
 				4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */,
 				43A27F4A2003EE4400F7B95A /* WatchlistCell.swift in Sources */,
 				4322A84F1FF79DF30066533D /* UIViewController+Embed.swift in Sources */,

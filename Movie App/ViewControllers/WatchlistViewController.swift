@@ -14,6 +14,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var tableView: UITableView!
     private let watchlistManager = WatchlistManager()
+    private lazy var internetConnectionManager = InternetConnection()
     
     private lazy var frc: NSFetchedResultsController<MovieObj> = {
         let fetchRequest = NSFetchRequest<MovieObj>(entityName: "MovieObj")
@@ -36,13 +37,13 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
 
         navigationItem.title = "My Watchlist"
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        watchlistManager.getMoviesFromWatchlist(page: 1) { (movies) in
-            self.watchlistManager.updateBaseIfNeeded(moviesFromResponse: movies.results!)
-        }
+        
+        updateBaseIfNeeded()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,6 +59,27 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         let movie = frc.object(at: indexPath)
         cell.configureCell(movie: movie)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return internetConnectionManager.isConnectedToInternet
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let removableMovieId = frc.object(at: indexPath).id
+            watchlistManager.removeOrAddMovie(withId: Int(removableMovieId), needToAdd: false, complition: {
+                self.updateBaseIfNeeded()
+            })
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "MovieDetails") as! MovieDetailsViewController
+        let movie = frc.object(at: indexPath)
+        vc.movieDetails = Movie(id: Int(movie.id), genres: nil, budget: nil, title: movie.title!, overview: nil, posterPath: movie.poster, countries: nil, releaseDate: "", credits: nil, voteAverage: movie.voteAverage, voteCount: Int(movie.voteCount), genreIds: movie.genres)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func controllerWillChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -96,7 +118,13 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     private func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-
+    
+    private func updateBaseIfNeeded() {
+        watchlistManager.getMoviesFromWatchlist(page: 1) { (movies) in
+            self.watchlistManager.updateBaseIfNeeded(moviesFromResponse: movies.results!)
+        }
+    }
+    
     static func create() -> UIViewController {
         let vc = UIStoryboard(name: "Watchlist", bundle: nil).instantiateViewController(withIdentifier: "WatchlistVC")
         return vc

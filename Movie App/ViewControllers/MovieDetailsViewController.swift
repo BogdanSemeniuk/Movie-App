@@ -39,6 +39,11 @@ class MovieDetailsViewController: UIViewController {
             addOrRemoveButton.setImage(UIImage(named: imageName), for: UIControlState.normal)
         }
     }
+    var overview: String? {
+        didSet {
+            overviewLabel.text = overview != nil ? "Overview: " + overview! : "Overview: "
+        }
+    }
     
     // MARK: - Life Cycl
     
@@ -48,7 +53,7 @@ class MovieDetailsViewController: UIViewController {
         titleLabel.text = movieDetails.title
         releaseLabel.text = createYearString(date: movieDetails.releaseDate)
         genresLabel.text = createGenresString(genresId: movieDetails.genreIds!)
-        overviewLabel.text = "Overview: " + movieDetails.overview!
+        overview = movieDetails.overview
         budgetLabel.text = ""
         countryLabel.text = ""
         videoPlayerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
@@ -64,6 +69,8 @@ class MovieDetailsViewController: UIViewController {
             self?.budgetLabel.text = createBudgetString(budget: movieInfo.budget)
             self?.countryLabel.text = createCountriesString(countries: movieInfo.countries)
             self?.directorLabel.text = createDirectorsString(crew: movieInfo.credits?.crew)
+            self?.overview = movieInfo.overview
+            self?.releaseLabel.text = createYearString(date: movieInfo.releaseDate)
             self?.actorsLabel.text = createActorsString(cast: movieInfo.credits?.cast)
         }
         moviesManager.getMovieImages(id: movieDetails.id) { [weak self] (images) in

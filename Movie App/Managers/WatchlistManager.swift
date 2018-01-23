@@ -107,7 +107,7 @@ class WatchlistManager {
         }
         return allMovies
     }
-    
+        
     private func saveMoviesToBase(movies: [Movie]) {
         for movie in movies {
             let entity = NSEntityDescription.entity(forEntityName: "MovieObj", in: CoreDataManager.context)
