@@ -79,7 +79,7 @@ class HomeViewController: UIViewController {
         SideMenuManager.defaultManager.menuAnimationFadeStrength = 0.2
         SideMenuManager.defaultManager.menuShadowOpacity = 0.9
         SideMenuManager.defaultManager.menuShadowRadius = 10
-        SideMenuManager.defaultManager.menuAnimationBackgroundColor = UIColor(patternImage: UIImage(named: "Background1")!)
+        SideMenuManager.defaultManager.menuAnimationBackgroundColor = UIColor(patternImage: UIImage(named: "dark_background_texture")!)
     }
     
     func createMenu() {

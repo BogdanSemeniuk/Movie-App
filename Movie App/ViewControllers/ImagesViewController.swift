@@ -79,9 +79,6 @@ class ImagesViewController: UIViewController, UICollectionViewDelegateFlowLayout
         default:
             rightArrowImageView.alpha = 0.6
             leftArrowImageView.alpha = 0.6
-            
         }
-        
     }
-    
 }
