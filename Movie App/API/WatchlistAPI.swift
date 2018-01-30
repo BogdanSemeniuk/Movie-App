@@ -15,7 +15,6 @@ enum WatchlistAPI {
     case addMovieToMyWatchlist(id: Int, add: Bool)
 }
 
-
 extension WatchlistAPI: TargetType {
     var baseURL: URL {
         return URL(string: "https://api.themoviedb.org/3")!

@@ -37,7 +37,7 @@ class LoginManager {
         }
     }
 
-    func getSessionId(complition: @escaping () -> ()) {
+    func getSessionId(complition: @escaping () -> Void) {
         provider.request(.getSessionId(token: token)) { (result) in
             switch result {
             case let .success(moyaResponse):

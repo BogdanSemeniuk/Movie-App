@@ -58,12 +58,11 @@ class MovieDetailsViewController: UIViewController {
         countryLabel.text = ""
         videoPlayerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         trailerLabel.text = ""
-        addOrRemoveButton.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        addOrRemoveButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         
         guard let posterPath = movieDetails.posterPath else {return}
         let urlPoster = createPosterURL(path: posterPath)
         posterImageView.kf.setImage(with: urlPoster)
-        
         moviesManager.getMovieDetails(id: movieDetails.id) { [weak self] (movieInfo) in
             self?.movieDetails = movieInfo
             self?.budgetLabel.text = createBudgetString(budget: movieInfo.budget)
@@ -87,20 +86,30 @@ class MovieDetailsViewController: UIViewController {
             }
         }
         setButton()
+        setBackButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         ratingView.showRatingWithAnimation(rating: movieDetails.voteAverage)
     }
     
     @IBAction func addOrRemoveButtonTouched() {
         if let movieInWatchlist = isMovieInWatchlist {
-            watchlistManager.removeOrAddMovie(withId: movieDetails.id, needToAdd: !movieInWatchlist, complition: {
-                self.setButton()
+            watchlistManager.removeOrAddMovie(withId: movieDetails.id, needToAdd: !movieInWatchlist, complition: { [weak self] in
+                self?.setButton()
             })
         } 
+    }
+    
+    private func setBackButton() {
+        let backButton = UIBarButtonItem(image: UIImage(named: "back button1"), style: .plain, target: self, action: #selector(backButtonTouched))
+        backButton.tintColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc private func backButtonTouched() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func setButton() {

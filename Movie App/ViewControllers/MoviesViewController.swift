@@ -19,7 +19,7 @@ enum MovieSort {
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Outlets
-    
+
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
@@ -36,7 +36,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationTitile()
+        setNavigationTitileAndBackgroundColor()
         genresManager.updateIfNeeded()
         getMovies()
     }
@@ -56,19 +56,17 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
  
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
         
-        guard let posterPath = movie.posterPath else {return UITableViewCell()}
-        let urlPoster = createPosterURL(path: posterPath)
-        cell.posterImageView.kf.setImage(with: urlPoster)
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+        cell.selectedBackgroundView = view
         
-        cell.titleLabel.text = movie.title
-        cell.ratingLabel.text = String(movie.voteAverage)
-        cell.genresLabel.text = createGenresString(genresId: movie.genreIds!)
-        cell.yearLabel.text = createYearString(date: movie.releaseDate)
+        setCellContent(of: cell, withMovie: movie)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "MovieDetails") as! MovieDetailsViewController
         vc.movieDetails = moviesContent[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
@@ -124,22 +122,39 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let result = movies.results {
             self.moviesContent+=result
             self.reloadTableView()
-            self.currentPage+=1
+            self.currentPage += 1
             self.responseFetchedUp = true
         }
     }
     
-    func setNavigationTitile() {
+    func setNavigationTitileAndBackgroundColor() {
+        let textAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+        
+        var navigationTitle = ""
         switch kindOfMovies {
         case .nowPlaying:
-            navigationItem.title = "Now Playing Movies"
+            navigationTitle = "Now Playing Movies"
         case .upcoming:
-            navigationItem.title = "Upcoming Movies"
+            navigationTitle = "Upcoming Movies"
         case .topRated:
-            navigationItem.title = "Top Rated Movies"
+            navigationTitle = "Top Rated Movies"
         case .popular:
-            navigationItem.title = "Popular Movies"
+            navigationTitle = "Popular Movies"
         }
+        navigationItem.title = navigationTitle
+    }
+    
+    private func setCellContent(of cell: MovieCell, withMovie movie: Movie) {
+        guard let posterPath = movie.posterPath else { return }
+        let urlPoster = createPosterURL(path: posterPath)
+        cell.posterImageView.kf.setImage(with: urlPoster)
+        
+        cell.titleLabel.text = movie.title
+        cell.ratingLabel.text = String(movie.voteAverage)
+        cell.genresLabel.text = createGenresString(genresId: movie.genreIds!)
+        cell.yearLabel.text = createYearString(date: movie.releaseDate)
     }
     
     static func create(kindOfMovie: MovieSort) -> MoviesViewController {

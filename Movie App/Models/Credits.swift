@@ -36,9 +36,3 @@ struct Worker: Decodable {
         case profilePath = "profile_path"
     }
 }
-
-
-
-
-
-

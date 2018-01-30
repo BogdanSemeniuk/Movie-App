@@ -21,9 +21,10 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
 
-        let frController = NSFetchedResultsController(fetchRequest:
-        fetchRequest, managedObjectContext:
-        CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        let frController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                      managedObjectContext: CoreDataManager.context,
+                                                      sectionNameKeyPath: nil,
+                                                      cacheName: nil)
         frController.delegate = self
         do {
             try frController.performFetch()

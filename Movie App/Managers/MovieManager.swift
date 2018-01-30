@@ -131,7 +131,7 @@ class MovieManager {
         }
     }
     
-    func isWatchlistContainMovie(id: Int, complition:@escaping (MovieStatus) -> ()) {
+    func isWatchlistContainMovie(id: Int, complition:@escaping (MovieStatus) -> Void) {
         provider.request(.getMovieStatusInWatchlist(id: id)) { (result) in
             switch result {
             case let .success(moyaResponse):

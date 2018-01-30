@@ -35,6 +35,7 @@ class MenuTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor.clear
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MenuCell")
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,9 +56,9 @@ class MenuTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel?.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 30.0)
-        cell.textLabel?.textColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+        cell.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+        cell.textLabel?.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 32.0)
+        cell.textLabel?.textColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         cell.textLabel?.text = content[indexPath.row]
         return cell
     }

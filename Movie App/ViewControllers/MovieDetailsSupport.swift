@@ -59,4 +59,3 @@ func createActorsString(cast: [Actor]?) -> String {
     let string = cast.filter {$0.order <= 8}.map {$0.name}.joined(separator: ", ")
     return "Actors: " + string
 }
-

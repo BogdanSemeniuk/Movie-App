@@ -62,12 +62,9 @@ class HomeViewController: UIViewController {
     }
     
     func createMenuButton(viewController: UIViewController) {
-        let button: UIButton = UIButton(type: .custom)
-        button.setImage(UIImage(named: "multimedia"), for: .normal)
-        button.addTarget(self, action: #selector(menuTouched), for: UIControlEvents.touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
-        let barButton = UIBarButtonItem(customView: button)
+        let barButton = UIBarButtonItem(image: UIImage(named: "multimedia"), style: .plain, target: self, action: #selector(menuTouched))
         viewController.navigationItem.leftBarButtonItem = barButton
+        viewController.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
     }
     
     @objc func menuTouched() {
@@ -79,7 +76,6 @@ class HomeViewController: UIViewController {
         SideMenuManager.defaultManager.menuAnimationFadeStrength = 0.2
         SideMenuManager.defaultManager.menuShadowOpacity = 0.9
         SideMenuManager.defaultManager.menuShadowRadius = 10
-        SideMenuManager.defaultManager.menuAnimationBackgroundColor = UIColor(patternImage: UIImage(named: "dark_background_texture")!)
     }
     
     func createMenu() {

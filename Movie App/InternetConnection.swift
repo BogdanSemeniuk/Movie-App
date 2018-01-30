@@ -15,7 +15,7 @@ class InternetConnection {
     
     private let manager = NetworkReachabilityManager()!
     
-    var isConnectedToInternet:Bool {
+    var isConnectedToInternet: Bool {
         return manager.isReachable
     }
 }

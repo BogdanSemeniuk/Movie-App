@@ -73,7 +73,7 @@ class RatingView: UIView {
         let progress = CGFloat(rating / 10)
         animateCircleLayer(progress: progress)
         
-        let attributs = [NSAttributedStringKey.font : UIFont(name: "AmericanTypewriter-CondensedBold", size: 20.0)]
+        let attributs = [NSAttributedStringKey.font : UIFont(name: "AmericanTypewriter-CondensedBold", size: 20.0)!]
         let attributedStr = NSMutableAttributedString(string: String(rating), attributes: attributs)
         ratingLabel.attributedText = attributedStr
     }
