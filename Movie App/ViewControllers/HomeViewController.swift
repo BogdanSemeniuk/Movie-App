@@ -26,6 +26,9 @@ class HomeViewController: UIViewController {
     private lazy var watchlistVC: UIViewController = {
         return WatchlistViewController.create()
     }()
+    private lazy var searchVC: UIViewController = {
+        return SearchViewController.create()
+    }()
     private let nc = UINavigationController()
     private let loginManager = LoginManager()
     
@@ -42,6 +45,8 @@ class HomeViewController: UIViewController {
                 setContent(vc: nowPlayingVC)
             case .myList:
                 setContent(vc: watchlistVC)
+            case .search:
+                setContent(vc: searchVC)
             default:
                 break
             }
@@ -83,18 +88,13 @@ class HomeViewController: UIViewController {
         menuTableVC.complition = {[unowned self] selectedItem in
             if self.selectedMenuItem != selectedItem {
                 switch selectedItem {
-                case .topRated, .nowPlaying, .popular, .upcoming:
+                case .topRated, .nowPlaying, .popular, .upcoming, .myList, .search:
                     self.removeFromContent()
                     self.selectedMenuItem = selectedItem
                 case .login:
                     self.loginManager.getTokenAndRedirectToApp()
                 case .logout:
                     Keychain.sharedStorage.clear()
-                case .myList:
-                    self.removeFromContent()
-                    self.selectedMenuItem = selectedItem
-                default:
-                    break
                 }
             }
         }
