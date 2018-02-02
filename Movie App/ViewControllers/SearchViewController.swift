@@ -12,6 +12,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "HAHAHA"
     }
     
     static func create() -> UIViewController {
