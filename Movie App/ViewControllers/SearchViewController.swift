@@ -8,24 +8,34 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
 
     lazy var searchTextField: UITextField = {
         let frame = getFrameOfSearchTextField()
-        let textField = UITextField(frame: frame)
-        textField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        textField.borderStyle = .roundedRect
-        return textField
+        let searchField = UITextField(frame: frame)
+        setTextField(textField: searchField)
+        return searchField
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.titleView = searchTextField
-        
     }
     
-    func getFrameOfSearchTextField() -> CGRect {
+    // MARK: - TextFieldDelegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: - Methods
+    
+    private func getFrameOfSearchTextField() -> CGRect {
         if let navBarBounds = navigationController?.navigationBar.bounds.size {
             let point = CGPoint(x: 0.0, y: 0.0)
             let height = navBarBounds.height - 12.0
@@ -33,6 +43,16 @@ class SearchViewController: UIViewController {
             return CGRect(origin: point, size: CGSize(width: wight, height: height))
         }
         return CGRect(x: 0, y: 0, width: 0, height: 0)
+    }
+    
+    private func setTextField(textField: UITextField) {
+        textField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Search🔎"
+        textField.textAlignment = NSTextAlignment.center
+        textField.delegate = self
+        textField.clearButtonMode = .whileEditing
+        textField.returnKeyType = UIReturnKeyType.done
     }
     
     static func create() -> UIViewController {

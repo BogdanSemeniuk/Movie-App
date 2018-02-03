@@ -57,7 +57,7 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
         cell.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
-        cell.textLabel?.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 32.0)
+        cell.textLabel?.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 25.0)
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         cell.textLabel?.text = content[indexPath.row]
         return cell
