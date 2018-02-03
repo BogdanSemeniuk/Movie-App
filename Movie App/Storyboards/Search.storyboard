@@ -29,7 +29,7 @@
                                 <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="watchCell" rowHeight="113" id="v75-jT-Zix" customClass="WatchlistCell" customModule="Movie_App" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="watchlistAndSearchCell" rowHeight="113" id="v75-jT-Zix" customClass="WatchlistAndSearchCell" customModule="Movie_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v75-jT-Zix" id="SID-7t-MTk">
@@ -43,7 +43,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGk-wt-14l">
-                                                    <rect key="frame" x="94.5" y="5" width="254.5" height="35"/>
+                                                    <rect key="frame" x="94.5" y="5" width="270.5" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="s1l-MA-JoX"/>
                                                     </constraints>
@@ -52,7 +52,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW7-k0-xKJ">
-                                                    <rect key="frame" x="94.5" y="45" width="254.5" height="29"/>
+                                                    <rect key="frame" x="94.5" y="45" width="270.5" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="tjO-LK-qtk"/>
                                                     </constraints>
@@ -130,6 +130,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="K9b-N6-I2f" id="oaK-ta-I5p"/>
+                                    <outlet property="delegate" destination="K9b-N6-I2f" id="Xr4-KK-NN2"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,6 +145,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6hY-EH-jjB"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="39y-m0-FRX" id="VkX-XV-ahd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whB-Im-fqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,8 +8,10 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITextFieldDelegate {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     lazy var searchTextField: UITextField = {
         let frame = getFrameOfSearchTextField()
         let searchField = UITextField(frame: frame)
@@ -31,6 +33,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    // MARK: - TableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "watchlistAndSearchCell", for: indexPath) as! WatchlistAndSearchCell
+        return cell
     }
     
     // MARK: - Methods

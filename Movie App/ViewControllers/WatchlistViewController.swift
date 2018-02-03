@@ -56,7 +56,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "watchCell", for: indexPath) as! WatchlistCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "watchlistAndSearchCell", for: indexPath) as! WatchlistAndSearchCell
         let movie = frc.object(at: indexPath)
         cell.configureCell(movie: movie)
         return cell
@@ -108,7 +108,7 @@ class WatchlistViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             break
         case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? WatchlistCell  {
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? WatchlistAndSearchCell  {
                 let movie = frc.object(at: indexPath)
                 cell.configureCell(movie: movie)
             }
