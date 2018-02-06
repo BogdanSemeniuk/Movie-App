@@ -67,7 +67,7 @@ class HomeViewController: UIViewController {
     }
     
     func createMenuButton(viewController: UIViewController) {
-        let barButton = UIBarButtonItem(image: UIImage(named: "multimedia"), style: .plain, target: self, action: #selector(menuTouched))
+        let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "multimedia"), style: .plain, target: self, action: #selector(menuTouched))
         viewController.navigationItem.leftBarButtonItem = barButton
         viewController.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
     }
@@ -116,7 +116,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func getSessionId() {
-        loginManager.getSessionId {
-        }
+        loginManager.getSessionId {}
     }
 }

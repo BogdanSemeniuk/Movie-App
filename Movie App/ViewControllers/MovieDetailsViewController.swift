@@ -86,7 +86,6 @@ class MovieDetailsViewController: UIViewController {
             }
         }
         setButton()
-        setBackButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,13 +100,7 @@ class MovieDetailsViewController: UIViewController {
             })
         } 
     }
-    
-    private func setBackButton() {
-        let backButton = UIBarButtonItem(image: UIImage(named: "back button1"), style: .plain, target: self, action: #selector(backButtonTouched))
-        backButton.tintColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
-        navigationItem.leftBarButtonItem = backButton
-    }
-    
+        
     @objc private func backButtonTouched() {
         navigationController?.popViewController(animated: true)
     }

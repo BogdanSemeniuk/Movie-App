@@ -18,31 +18,34 @@ enum MovieAPI {
     case getAllImages(id: Int)
     case getMovieTrailers(id: Int)
     case getMovieStatusInWatchlist(id: Int)
+    case searchMovies(page: Int, query: String)
 }
 
 extension MovieAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "https://api.themoviedb.org/3/movie")!
+        return URL(string: "https://api.themoviedb.org/3")!
     }
     
     var path: String {
         switch self {
-        case .getPopularMovies(page: _):
-            return "popular"
-        case .getUpcomingMovies(page: _):
-            return "upcoming"
-        case .getTopRatedMovies(page: _):
-            return "top_rated"
-        case .getNowPlayingMovies(page: _):
-            return "now_playing"
+        case .getPopularMovies(_):
+            return "movie/popular"
+        case .getUpcomingMovies(_):
+            return "movie/upcoming"
+        case .getTopRatedMovies(_):
+            return "movie/top_rated"
+        case .getNowPlayingMovies(_):
+            return "movie/now_playing"
         case .getMovieDetails(id: let id):
-            return "\(id)"
+            return "movie/\(id)"
         case .getAllImages(id: let id):
-            return "\(id)/images"
+            return "movie/\(id)/images"
         case .getMovieTrailers(id: let id):
-            return "\(id)/videos"
+            return "movie/\(id)/videos"
         case .getMovieStatusInWatchlist(id: let id):
-            return "\(id)/account_states"
+            return "movie/\(id)/account_states"
+        case .searchMovies(_, _):
+            return "search/movie"
         }
     }
     
@@ -67,6 +70,8 @@ extension MovieAPI: TargetType {
             return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US"], encoding: URLEncoding.queryString)
         case .getMovieStatusInWatchlist(id: _):
             return .requestParameters(parameters: ["api_key":apiKey, "session_id":sessionId!], encoding: URLEncoding.queryString)
+        case .searchMovies(let page, let query):
+            return .requestParameters(parameters: ["api_key":apiKey, "language":"en-US", "query":query, "page":page], encoding: URLEncoding.queryString)
         }
     }
     

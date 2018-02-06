@@ -135,6 +135,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zh7-if-Au7"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Lon-R4-uFT">
+                        <barButtonItem key="backBarButtonItem" title=" " id="YMu-YA-9TY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="OUk-4t-orB" id="3vV-Re-iYI"/>
                     </connections>
@@ -335,6 +338,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VJy-Ng-Bgp"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dOb-RT-hKV">
+                        <barButtonItem key="backBarButtonItem" title=" " id="EfN-6d-3U3"/>
+                    </navigationItem>
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>
                         <outlet property="actorsLabel" destination="9vl-79-JXH" id="tjv-EX-OH0"/>

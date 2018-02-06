@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let loginManager = LoginManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.statusBarStyle = .lightContent
+        UINavigationBar.appearance().tintColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
         
         var initialVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login")
         

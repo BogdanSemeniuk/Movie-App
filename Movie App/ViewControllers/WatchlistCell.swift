@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WatchlistAndSearchCell: UITableViewCell {
+class WatchlistCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!

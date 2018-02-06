@@ -131,6 +131,23 @@ class MovieManager {
         }
     }
     
+    func searchMovies(page: Int, query: String, complition: @escaping (PackageOfMovies) -> ()) {
+        provider.request(.searchMovies(page: page, query: query)) { (result) in
+            switch result {
+            case let .success(moyaResponse):
+                let responseData = moyaResponse.data
+                do {
+                    let moviesPackage = try JSONDecoder().decode(PackageOfMovies.self, from: responseData)
+                    complition(moviesPackage)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error.errorDescription ?? "Unknown error")
+            }
+        }
+    }
+    
     func isWatchlistContainMovie(id: Int, complition:@escaping (MovieStatus) -> Void) {
         provider.request(.getMovieStatusInWatchlist(id: id)) { (result) in
             switch result {

@@ -20,11 +20,12 @@
 		43593E921FF180C8009AE349 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43593E911FF180C8009AE349 /* ImagesViewController.swift */; };
 		436364071FF6BB9000D8326F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436364061FF6BB9000D8326F /* HomeViewController.swift */; };
 		436DA7A22017A99F002E07C8 /* MovieStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436DA7A12017A99F002E07C8 /* MovieStatus.swift */; };
+		4370CE762029CD1800E7B501 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4370CE752029CD1800E7B501 /* SearchCell.swift */; };
 		438CEAE72023445800D20DF5 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438CEAE62023445800D20DF5 /* Search.storyboard */; };
 		438CEAE92023449C00D20DF5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CEAE82023449C00D20DF5 /* SearchViewController.swift */; };
 		43A27F442003BF5D00F7B95A /* WatchlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F432003BF5D00F7B95A /* WatchlistManager.swift */; };
 		43A27F462003C04800F7B95A /* WatchlistAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F452003C04800F7B95A /* WatchlistAPI.swift */; };
-		43A27F4A2003EE4400F7B95A /* WatchlistAndSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F492003EE4400F7B95A /* WatchlistAndSearchCell.swift */; };
+		43A27F4A2003EE4400F7B95A /* WatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F492003EE4400F7B95A /* WatchlistCell.swift */; };
 		43A27F4C2003FC9D00F7B95A /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A27F4B2003FC9D00F7B95A /* WatchlistViewController.swift */; };
 		F506C26D1FC0912100B85511 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26C1FC0912100B85511 /* Keychain.swift */; };
 		F506C26F1FC096F800B85511 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506C26E1FC096F800B85511 /* MoviesViewController.swift */; };
@@ -71,11 +72,12 @@
 		43593E911FF180C8009AE349 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		436364061FF6BB9000D8326F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		436DA7A12017A99F002E07C8 /* MovieStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStatus.swift; sourceTree = "<group>"; };
+		4370CE752029CD1800E7B501 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		438CEAE62023445800D20DF5 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		438CEAE82023449C00D20DF5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		43A27F432003BF5D00F7B95A /* WatchlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistManager.swift; sourceTree = "<group>"; };
 		43A27F452003C04800F7B95A /* WatchlistAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAPI.swift; sourceTree = "<group>"; };
-		43A27F492003EE4400F7B95A /* WatchlistAndSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAndSearchCell.swift; sourceTree = "<group>"; };
+		43A27F492003EE4400F7B95A /* WatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCell.swift; sourceTree = "<group>"; };
 		43A27F4B2003FC9D00F7B95A /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
 		688DB312004A8D6F717657B2 /* Pods-Movie App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie App/Pods-Movie App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4FB34A478F95893481D52AD /* Pods_Movie_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,10 +193,11 @@
 				F5099C8F1FDEDCA000A0E963 /* RatingView.swift */,
 				436364061FF6BB9000D8326F /* HomeViewController.swift */,
 				43593E911FF180C8009AE349 /* ImagesViewController.swift */,
-				43A27F492003EE4400F7B95A /* WatchlistAndSearchCell.swift */,
+				43A27F492003EE4400F7B95A /* WatchlistCell.swift */,
 				434B7C2D1FFC1D8200038A11 /* MenuTableViewController.swift */,
 				43A27F4B2003FC9D00F7B95A /* WatchlistViewController.swift */,
 				438CEAE82023449C00D20DF5 /* SearchViewController.swift */,
+				4370CE752029CD1800E7B501 /* SearchCell.swift */,
 				F5629C411FEB1B2F004B2E3E /* ImageCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
@@ -428,7 +431,7 @@
 				434D302C200D057900391553 /* MovieObj+CoreDataProperties.swift in Sources */,
 				436DA7A22017A99F002E07C8 /* MovieStatus.swift in Sources */,
 				4322A8511FF79EB60066533D /* UIView+Embed.swift in Sources */,
-				43A27F4A2003EE4400F7B95A /* WatchlistAndSearchCell.swift in Sources */,
+				43A27F4A2003EE4400F7B95A /* WatchlistCell.swift in Sources */,
 				4322A84F1FF79DF30066533D /* UIViewController+Embed.swift in Sources */,
 				F5427E3D1FD830F800C2C279 /* Country.swift in Sources */,
 				F515533E1FCDEEE700D96A24 /* CoreDataManager.swift in Sources */,
@@ -441,6 +444,7 @@
 				43227BD81FF1C47200BDD67C /* Videos.swift in Sources */,
 				438CEAE92023449C00D20DF5 /* SearchViewController.swift in Sources */,
 				F506C2711FC0A84300B85511 /* LoginPageViewController.swift in Sources */,
+				4370CE762029CD1800E7B501 /* SearchCell.swift in Sources */,
 				F54A46C91FE9CD33008509A8 /* Images.swift in Sources */,
 				F5F4E07B1FC1C32F00670F41 /* InternetConnection.swift in Sources */,
 				F55447221FD425AD004900F5 /* GenreObj+CoreDataClass.swift in Sources */,

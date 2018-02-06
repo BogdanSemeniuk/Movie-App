@@ -11,8 +11,11 @@ import UIKit
 class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    lazy var searchTextField: UITextField = {
+    private let moviesManager = MovieManager()
+    private var moviesContent = [Movie]()
+    private var responseFetchedUp = false
+    private var currentPage = 1
+    private lazy var searchTextField: UITextField = {
         let frame = getFrameOfSearchTextField()
         let searchField = UITextField(frame: frame)
         setTextField(textField: searchField)
@@ -22,31 +25,71 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = searchTextField
+        getMovies()
     }
     
     // MARK: - TextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()
+        print("textFieldDidBeginEditing")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        currentPage = 1
+        moviesManager.searchMovies(page: 1, query: textField.text!) {[weak self] (movies) in
+            self?.changeCurrentPageAndUpdateContent(movies: movies)
+        }
         return true
     }
     
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return moviesContent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "watchlistAndSearchCell", for: indexPath) as! WatchlistAndSearchCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchCell
+        let movie = moviesContent[indexPath.row]
+        cell.configureCell(withMovie: movie)
         return cell
     }
     
+    // MARK: - Scroll View
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height && responseFetchedUp {
+            getMovies()
+            responseFetchedUp = false
+        }
+    }
+    
     // MARK: - Methods
+    
+    private func getMovies() {
+        
+        moviesManager.getUpcomingMovies(page: currentPage, complition: { [weak self] movies in
+            self?.changeCurrentPageAndUpdateContent(movies: movies)
+        })
+    }
+    
+    private func reloadTableView() {
+        tableView.reloadData()
+    }
+
+    private func changeCurrentPageAndUpdateContent(movies: PackageOfMovies) {
+        if let result = movies.results {
+            self.moviesContent+=result
+            self.reloadTableView()
+            self.currentPage += 1
+            self.responseFetchedUp = true
+        }
+    }
     
     private func getFrameOfSearchTextField() -> CGRect {
         if let navBarBounds = navigationController?.navigationBar.bounds.size {
