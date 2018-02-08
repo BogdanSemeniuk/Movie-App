@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,9 +18,13 @@ class SearchCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     
     func configureCell(withMovie movie: Movie) {
-        guard let posterPath = movie.posterPath else { return }
-        let urlPoster = createPosterURL(path: posterPath)
-        self.posterImageView.kf.setImage(with: urlPoster)
+        if let posterPath = movie.posterPath {
+            let urlPoster = createPosterURL(path: posterPath)
+            self.posterImageView.kf.setImage(with: urlPoster)
+        } else {
+            let url = URL(string: "https://image.ibb.co/kvjirH/movie_image.jpg")
+            self.posterImageView.kf.setImage(with: url)
+        }
         
         self.titleLabel.text = movie.title
         self.voteCountLabel.text = String(movie.voteCount)

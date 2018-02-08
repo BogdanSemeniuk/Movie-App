@@ -9,7 +9,13 @@
 import Foundation
 
 struct PackageOfMovies: Decodable {
+    var totalPages: Int?
     var results: [Movie]?
+    
+    enum CodingKeys: String, CodingKey {
+        case totalPages = "total_pages"
+        case results
+    }
 }
 
 struct Movie: Decodable {

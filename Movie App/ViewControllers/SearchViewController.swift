@@ -8,13 +8,19 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     private let moviesManager = MovieManager()
-    private var moviesContent = [Movie]()
-    private var responseFetchedUp = false
-    private var currentPage = 1
+    private var moviesContent = [Movie]() {
+        didSet {
+            tableView.reloadData()
+            contentWasSet = true
+        }
+    }
+    private var contentWasSet = false
+    private var workItem: DispatchWorkItem?
+    private var searchQuery = SearchQuery(query: "", page: 1, totalPages: 0)
     private lazy var searchTextField: UITextField = {
         let frame = getFrameOfSearchTextField()
         let searchField = UITextField(frame: frame)
@@ -25,26 +31,33 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = searchTextField
-        getMovies()
+        
+        moviesManager.getUpcomingMovies(page: 1, complition: { [weak self] packageOfMovies in
+            if let movies = packageOfMovies.results {
+                self?.moviesContent = movies
+            }
+        })
     }
     
     // MARK: - TextFieldDelegate
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.becomeFirstResponder()
-        print("textFieldDidBeginEditing")
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        currentPage = 1
-        moviesManager.searchMovies(page: 1, query: textField.text!) {[weak self] (movies) in
-            self?.changeCurrentPageAndUpdateContent(movies: movies)
-        }
         return true
     }
     
-    // MARK: - TableView
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        searchQuery = SearchQuery(query: "", page: 1, totalPages: 0)
+        workItem?.cancel()
+        let queryString = createQueryString(replacementString: string)
+        workItem = DispatchWorkItem  {
+            self.searchMovies(withQuery: queryString)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: workItem!)
+        return true
+    }
+    
+    // MARK: - TableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesContent.count
@@ -57,38 +70,59 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDeleg
         return cell
     }
     
-    // MARK: - Scroll View
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: "Movies", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetails") as! MovieDetailsViewController
+        vc.movieDetails = moviesContent[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - ScrollViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        if distanceFromBottom < height && responseFetchedUp {
-            getMovies()
-            responseFetchedUp = false
+        if distanceFromBottom < height && contentWasSet {
+            contentWasSet = false
+            searchMovies(withQuery: searchQuery.query)
         }
     }
     
     // MARK: - Methods
     
-    private func getMovies() {
-        
-        moviesManager.getUpcomingMovies(page: currentPage, complition: { [weak self] movies in
-            self?.changeCurrentPageAndUpdateContent(movies: movies)
-        })
+    private func searchMovies(withQuery query: String) {
+        let page = searchQuery.page
+        self.moviesManager.searchMovies(page: page, query: query) { [weak self] (packageOfMovies) in
+            guard let totalPages = packageOfMovies.totalPages else { return }
+            guard let movies = packageOfMovies.results else { return }
+            self?.searchQuery.totalPages = totalPages
+            if page == 1 {
+               self?.moviesContent = movies
+            } else {
+                self?.moviesContent += movies
+            }
+            self?.updateSearchQuery(query: query)
+        }
     }
     
-    private func reloadTableView() {
-        tableView.reloadData()
-    }
-
-    private func changeCurrentPageAndUpdateContent(movies: PackageOfMovies) {
-        if let result = movies.results {
-            self.moviesContent+=result
-            self.reloadTableView()
-            self.currentPage += 1
-            self.responseFetchedUp = true
+    private func updateSearchQuery(query: String) {
+        searchQuery.query = query
+        if searchQuery.page < searchQuery.totalPages {
+            searchQuery.page += 1
         }
+    }
+    
+    private func createQueryString(replacementString string: String) -> String {
+        guard let textFieldString = searchTextField.text else { return "" }
+        var queryString = textFieldString
+        if string == "" {
+            queryString.removeLast()
+        } else {
+            queryString = queryString + string
+        }
+        return queryString
     }
     
     private func getFrameOfSearchTextField() -> CGRect {
