@@ -12,6 +12,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDeleg
 
     @IBOutlet weak var tableView: UITableView!
     private let moviesManager = MovieManager()
+    private let upcomingManager = UpcomingListMoviesManager()
     private var moviesContent = [Movie]() {
         didSet {
             tableView.reloadData()
@@ -32,7 +33,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITabBarDeleg
         super.viewDidLoad()
         navigationItem.titleView = searchTextField
         
-        moviesManager.getUpcomingMovies(page: 1, complition: { [weak self] packageOfMovies in
+        upcomingManager.getMovies(page: 1, complition: { [weak self] packageOfMovies in
             if let movies = packageOfMovies.results {
                 self?.moviesContent = movies
             }

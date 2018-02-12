@@ -24,6 +24,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Properties
     
+    var moviesListManager: MoviesListManager!
+    
     private let moviesManager = MovieManager()
     private let genresManager = GenreManager()
     private var moviesContent = [Movie]()
@@ -35,10 +37,9 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setNavigationTitileAndBackgroundColor()
         genresManager.updateIfNeeded()
-        getMovies()
+        moviesListManager.getMovies(page: currentPage, complition: changeCurrentPageAndUpdateContent)
     }
     
     // MARK: - Table View
@@ -79,17 +80,12 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         if distanceFromBottom < height && responseFetchedUp {
-            getMovies()
+            moviesListManager.getMovies(page: currentPage, complition: changeCurrentPageAndUpdateContent)
             responseFetchedUp = false
         }
     }
     
     // MARK: - Methods
-    
-    private func reloadTableView() {
-        tableView.reloadData()
-    }
-    
     private func createPosterURL(path: String) -> URL? {
         let url = URL(string: "http://image.tmdb.org")
         let path = "t/p/w342/" + path
@@ -97,31 +93,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return posterPath
     }
     
-    private func getMovies() {
-        switch kindOfMovies {
-        case .upcoming:
-            moviesManager.getUpcomingMovies(page: currentPage, complition: { [unowned self] movies in
-                self.changeCurrentPageAndUpdateContent(movies: movies)
-            })
-        case .popular:
-            moviesManager.getPopularMovies(page: currentPage, complition: { [unowned self] movies in
-                    self.changeCurrentPageAndUpdateContent(movies: movies)
-                })
-        case .topRated:
-            moviesManager.getTopRatedMovies(page: currentPage, complition: { [unowned self] movies in
-                self.changeCurrentPageAndUpdateContent(movies: movies)
-            })
-        case .nowPlaying:
-            moviesManager.getNowPlayingMovies(page: currentPage, complition: { [unowned self] movies in
-                self.changeCurrentPageAndUpdateContent(movies: movies)
-            })
-        }
-    }
-    
-    func changeCurrentPageAndUpdateContent(movies: PackageOfMovies) {
+    func changeCurrentPageAndUpdateContent(_ movies: PackageOfMovies) {
         if let result = movies.results {
             self.moviesContent+=result
-            self.reloadTableView()
+            self.tableView.reloadData()
             self.currentPage += 1
             self.responseFetchedUp = true
         }
@@ -159,6 +134,16 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     static func create(kindOfMovie: MovieSort) -> MoviesViewController {
         let vc = UIStoryboard(name: "Movies", bundle: nil).instantiateViewController(withIdentifier: "MoviesVC") as! MoviesViewController
+        switch kindOfMovie {
+        case .upcoming:
+            vc.moviesListManager = UpcomingListMoviesManager()
+        case .popular:
+            vc.moviesListManager = PopularListMoviesManager()
+        case .topRated:
+            vc.moviesListManager = TopRatedListMoviesManager()
+        case .nowPlaying:
+            vc.moviesListManager = NowPlayingListMoviesManager()
+        }
         vc.kindOfMovies = kindOfMovie
         return vc
     }

@@ -11,7 +11,6 @@ import CoreData
 
 class CoreDataManager {
     
-    static let instance = CoreDataManager()
     private init() {}
     
     static var context: NSManagedObjectContext {

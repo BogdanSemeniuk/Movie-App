@@ -14,18 +14,23 @@ class HomeViewController: UIViewController {
     private lazy var upcomingVC: MoviesViewController = {
         return MoviesViewController.create(kindOfMovie: .upcoming)
     }()
+    
     private lazy var popularVC: MoviesViewController = {
         return MoviesViewController.create(kindOfMovie: .popular)
     }()
+    
     private lazy var topRatedVC: MoviesViewController = {
         return MoviesViewController.create(kindOfMovie: .topRated)
     }()
+    
     private lazy var nowPlayingVC: MoviesViewController = {
         return MoviesViewController.create(kindOfMovie: .nowPlaying)
     }()
+    
     private lazy var watchlistVC: UIViewController = {
         return WatchlistViewController.create()
     }()
+    
     private lazy var searchVC: UIViewController = {
         return SearchViewController.create()
     }()
